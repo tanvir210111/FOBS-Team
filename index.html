@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FOBS Subtitles - Bangla Subtitle Downloads</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #0d0d0d;
+      color: #fff;
+    }
+
+    header {
+      background-color: #1a1a1a;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    }
+
+    header h1 {
+      margin: 0;
+      color: #00ffc8;
+      font-size: 2.5em;
+    }
+
+    header p {
+      margin: 5px 0 0;
+      color: #ccc;
+      font-size: 1em;
+    }
+
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      padding: 20px;
+      background-color: #121212;
+    }
+
+    .filters input, .filters select {
+      padding: 10px;
+      border-radius: 5px;
+      border: none;
+      font-size: 1em;
+    }
+
+    .container {
+      padding: 30px 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .movie-card {
+      background-color: #1c1c1c;
+      border-radius: 8px;
+      overflow: hidden;
+      text-align: center;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+      transition: transform 0.3s ease;
+    }
+
+    .movie-card:hover {
+      transform: scale(1.05);
+    }
+
+    .movie-card img {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+    }
+
+    .movie-info {
+      padding: 10px;
+    }
+
+    .movie-title {
+      font-size: 1.1em;
+      color: #00ffc8;
+      margin: 10px 0;
+    }
+
+    .movie-year {
+      font-size: 0.9em;
+      color: #bbb;
+      margin-bottom: 10px;
+    }
+
+    .download-btn {
+      background-color: #00ffc8;
+      color: #000;
+      padding: 8px 15px;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: bold;
+      transition: background-color 0.2s;
+    }
+
+    .download-btn:hover {
+      background-color: #00e0b3;
+    }
+
+    footer {
+      background-color: #1a1a1a;
+      color: #aaa;
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9em;
+      margin-top: 50px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>FOBS Subtitles</h1>
+    <p>High-Quality Bangla Subtitles for Movies & TV Shows</p>
+  </header>
+
+  <!-- 🔍 Search & Filter Section -->
+  <div class="filters">
+    <input type="text" id="searchInput" placeholder="Search by title..." oninput="filterMovies()">
+    <select id="yearFilter" onchange="filterMovies()">
+      <option value="">All Years</option>
+      <option value="2025">2025</option>
+      <option value="2023">2023</option>
+      <option value="2021">2021</option>
+      <option value="2020">2020</option>
+      <option value="2018">2018</option>
+    </select>
+  </div>
+
+<div class="container">
+  <!-- Movie 1 -->
+ <a href="movie1.html" style="text-decoration: none; color: inherit;">
+    <div class="movie-card" data-title="Omniscient Reader: The Prophecy" data-year="2025">
+      <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/3R3dXO2nm8JyR5NG7SEfii7RzlV.jpg" alt="Omniscient Reader: The Prophecy">
+      <div class="movie-info">
+        <div class="movie-title">Omniscient Reader</div>
+        <div class="movie-year">(2025)</div>
+        <span class="download-btn">Click for Details</span>
+      </div>
+    </div>
+  </a>
+
+    <!-- Movie 2 -->
+   <a href="movie2.html" style="text-decoration: none; color: inherit;">
+    <div class="movie-card" data-title="Myrnyi-21" data-year="2023">
+      <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/VlgOREyY8pPjbsG3NLLJgRE7nv.jpg" alt="Myrnyi-21">
+      <div class="movie-info">
+        <div class="movie-title">Myrnyi-21</div>
+        <div class="movie-year">(2023)</div>
+        <span class="download-btn">Click for Details</span>
+      </div>
+    </div>
+  </a>
+
+    <!-- Movie 3 -->
+   <a href="movie3.html" style="text-decoration: none; color: inherit;">
+    <div class="movie-card" data-title="Warrior Nun" data-year="2020">
+      <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/fLP0mA7FiERZhDP1NJUaHpm6XM8.jpg" alt="Warrior Nun">
+      <div class="movie-info">
+        <div class="movie-title">Warrior Nun</div>
+        <div class="movie-year">(2020)</div>
+        <span class="download-btn">Click for Details</span>
+      </div>
+    </div>
+  </a>
+
+    <!-- Movie 4 -->
+   <a href="movie4.html" style="text-decoration: none; color: inherit;">
+    <div class="movie-card" data-title="The First Frost" data-year="2025">
+      <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/iqFr4kgIdJU73YoJr4Vdf7gFZqr.jpg" alt="The First Frost">
+      <div class="movie-info">
+        <div class="movie-title">The First Frost</div>
+        <div class="movie-year">(2025)</div>
+        <span class="download-btn">Click for Details</span>
+      </div>
+    </div>
+  </a>
+
+    <!-- Movie 5 -->
+   <a href="movie5.html" style="text-decoration: none; color: inherit;">
+    <div class="movie-card" data-title="Undercover High Schoolt" data-year="2025">
+      <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/qLWqaHiJpUbtlUKVxRneWBnTKTd.jpg" alt="Undercover High School">
+      <div class="movie-info">
+        <div class="movie-title">Undercover High School</div>
+        <div class="movie-year">(2025)</div>
+        <span class="download-btn">Click for Details</span>
+      </div>
+    </div>
+  </a>
+
+      <!-- Movie 6 -->
+   <a href="movie6.html" style="text-decoration: none; color: inherit;">
+    <div class="movie-card" data-title="My Dearest Nemesis" data-year="2025">
+      <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/obxTkvATqU8a65XDOFOQeZKd3PF.jpg" alt="My Dearest Nemesis">
+      <div class="movie-info">
+        <div class="movie-title">My Dearest Nemesis</div>
+        <div class="movie-year">(2025)</div>
+        <span class="download-btn">Click for Details</span>
+      </div>
+    </div>
+  </a>
+
+        <!-- Movie 7 -->
+   <a href="movie7.html" style="text-decoration: none; color: inherit;">
+    <div class="movie-card" data-title="High School Return of a Gangster" data-year="2024">
+      <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/bK5kGsWq9vGALbDgPmNiLFNFVI1.jpg" alt="High School Return of a Gangster">
+      <div class="movie-info">
+        <div class="movie-title">High School Gangster</div>
+        <div class="movie-year">(2024)</div>
+        <span class="download-btn">Click for Details</span>
+      </div>
+    </div>
+  </a>
+
+        <!-- Movie 8 -->
+   <a href="movie8.html" style="text-decoration: none; color: inherit;">
+    <div class="movie-card" data-title="The Haunted Palace" data-year="2025">
+      <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/nR1cuxMOPqHHapEzORa8RESKrWG.jpg" alt="The Haunted Palace">
+      <div class="movie-info">
+        <div class="movie-title">The Haunted Palace</div>
+        <div class="movie-year">(2025)</div>
+        <span class="download-btn">Click for Details</span>
+      </div>
+    </div>
+  </a>
+
+        <!-- Movie 9 -->
+   <a href="movie9.html" style="text-decoration: none; color: inherit;">
+    <div class="movie-card" data-title="Welcome to Waikiki" data-year="2018">
+      <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/pggzZamoLNTiRgoYz8WVCISMCqv.jpg" alt="Welcome to Waikiki">
+      <div class="movie-info">
+        <div class="movie-title">Welcome to Waikiki</div>
+        <div class="movie-year">(2018)</div>
+        <span class="download-btn">Click for Details</span>
+      </div>
+    </div>
+  </a>
+
+      <!-- Movie 10 -->
+   <a href="movie10.html" style="text-decoration: none; color: inherit;">
+    <div class="movie-card" data-title="You Are My Hero" data-year="2021">
+      <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/eeItxEkuGJXZ67vvHO4oNFEvgYT.jpg" alt="You Are My Hero">
+      <div class="movie-info">
+        <div class="movie-title">You Are My Hero</div>
+        <div class="movie-year">(2021)</div>
+        <span class="download-btn">Click for Details</span>
+      </div>
+    </div>
+  </a>
+</div>
+
+  <footer>
+    &copy; 2025 FOBS Team. All rights reserved.
+  </footer>
+
+  <!-- JavaScript: Search & Filter Logic -->
+  <script>
+    function filterMovies() {
+      const searchInput = document.getElementById("searchInput").value.toLowerCase();
+      const yearFilter = document.getElementById("yearFilter").value;
+      const cards = document.querySelectorAll(".movie-card");
+
+      cards.forEach(card => {
+        const title = card.getAttribute("data-title").toLowerCase();
+        const year = card.getAttribute("data-year");
+
+        const matchesSearch = title.includes(searchInput);
+        const matchesYear = yearFilter === "" || year === yearFilter;
+
+        if (matchesSearch && matchesYear) {
+          card.style.display = "block";
+        } else {
+          card.style.display = "none";
+        }
+      });
+    }
+  </script>
+
+</body>
+</html>
