@@ -6,93 +6,159 @@
   <title>Omniscient Reader: The Prophecy (2025) - FOBS Subtitles</title>
   <style>
     body {
-      margin:0; background:#0d0d0d; color:#fff; font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      background: #0d0d0d;
+      color: #fff;
+      font-family: 'Segoe UI', sans-serif;
     }
-    a { color:#00ffc8; text-decoration:none; }
-    a:hover { text-decoration:underline; }
+    a {
+      color: #00ffc8;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
     header {
-      background:#1a1a1a; padding:20px; text-align:center; box-shadow:0 2px 4px rgba(0,0,0,0.5);
+      background: #1a1a1a;
+      padding: 20px 60px;
+      position: relative;
+      text-align: center;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.5);
+      min-height: 56px;
     }
-    header h1 { margin:0; font-size:2.5em; }
+    header h1 {
+      margin: 0;
+      font-size: 2.5em;
+      color: #00ffc8;
+      line-height: 1;
+      position: relative;
+      z-index: 1;
+    }
     header h1 a {
-      color:#00ffc8;
-      text-decoration:none;
+      color: #00ffc8;
+      text-decoration: none;
     }
     header h1 a:hover {
-      text-decoration:underline;
+      text-decoration: underline;
     }
-    .content {
-      max-width:900px; margin:30px auto; padding:0 20px;
-    }
-    .movie-poster {
-      width: 100%; max-width: 350px; border-radius: 8px;
-      box-shadow: 0 4px 15px rgba(0,255,200,0.5);
-      display:block; margin:0 auto 20px;
-    }
-    .movie-title {
-      font-size: 2em; color: #00ffc8; text-align:center; margin-bottom:5px;
-    }
-    .movie-year {
-      font-size: 1.2em; color:#bbb; text-align:center; margin-bottom:20px;
-    }
-    .info {
-      background:#121212; border-radius:8px; padding:20px; margin-bottom:20px;
-    }
-    .info span {
-      display:block; margin-bottom:10px; font-size:1em;
-    }
-    .download-btn {
-      display:block;
-      background:#00ffc8; color:#000; text-align:center;
-      padding:12px 0; border-radius:6px;
-      font-weight:bold; font-size:1.1em;
-      width: 100%; max-width: 300px;
-      margin: 0 auto 30px;
-      text-decoration:none;
-      box-shadow: 0 3px 8px rgba(0,255,200,0.6);
-      transition: background-color 0.2s;
-    }
-    .download-btn:hover {
-      background:#00e0b3;
-    }
-    .trailer {
-      text-align:center; margin-bottom:30px;
-    }
-    iframe {
-      width:100%; max-width: 640px; height:360px; border:none; border-radius:8px;
-      box-shadow: 0 3px 10px rgba(0,255,200,0.4);
-    }
-    footer {
-      background:#1a1a1a; color:#aaa; text-align:center; padding:20px; font-size:0.9em;
-      margin-top: 40px;
-    }
-    /* Back button styles */
-    .back-button-top-left {
-      position: fixed;
-      top: 15px;
-      left: 15px;
+    .back-button {
+      position: absolute;
+      left: 20px;
+      top: 50%;
+      transform: translateY(-50%);
       background-color: #00ffc8;
       border: none;
       color: #000;
-      padding: 8px 14px;
-      font-size: 1em;
+      padding: 6px 10px;
+      font-size: 0.85em;
       border-radius: 5px;
       cursor: pointer;
       font-weight: bold;
       box-shadow: 0 2px 5px rgba(0,0,0,0.3);
       transition: background-color 0.2s ease;
-      z-index: 1000;
+      white-space: nowrap;
+      z-index: 10;
     }
-    .back-button-top-left:hover {
+    .back-button:hover {
       background-color: #00e0b3;
     }
+    /* Responsive fix for mobile */
+    @media (max-width: 480px) {
+      header {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+      header h1 {
+        font-size: 1.8em;
+      }
+      .back-button {
+        padding: 4px 8px;
+        font-size: 0.75em;
+        left: 10px;
+      }
+    }
+    .content {
+      max-width: 900px;
+      margin: 30px auto;
+      padding: 0 20px;
+    }
+    .movie-poster {
+      width: 100%;
+      max-width: 350px;
+      border-radius: 8px;
+      box-shadow: 0 4px 15px rgba(0,255,200,0.5);
+      display: block;
+      margin: 0 auto 20px;
+    }
+    .movie-title {
+      font-size: 2em;
+      color: #00ffc8;
+      text-align: center;
+      margin-bottom: 5px;
+    }
+    .movie-year {
+      font-size: 1.2em;
+      color: #bbb;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .info {
+      background: #121212;
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+    .info span {
+      display: block;
+      margin-bottom: 10px;
+      font-size: 1em;
+    }
+    .download-btn {
+      display: block;
+      background: #00ffc8;
+      color: #000;
+      text-align: center;
+      padding: 12px 0;
+      border-radius: 6px;
+      font-weight: bold;
+      font-size: 1.1em;
+      width: 100%;
+      max-width: 300px;
+      margin: 0 auto 30px;
+      text-decoration: none;
+      box-shadow: 0 3px 8px rgba(0,255,200,0.6);
+      transition: background-color 0.2s;
+    }
+    .download-btn:hover {
+      background: #00e0b3;
+    }
+    .trailer {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    iframe {
+      width: 100%;
+      max-width: 640px;
+      height: 360px;
+      border: none;
+      border-radius: 8px;
+      box-shadow: 0 3px 10px rgba(0,255,200,0.4);
+    }
+    footer {
+      background: #1a1a1a;
+      color: #aaa;
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9em;
+      margin-top: 40px;
+    }
+    
   </style>
 </head>
 <body>
 
-  <button class="back-button-top-left" onclick="window.history.back()">&#8592; Back</button>
-
   <header>
+    <button class="back-button" onclick="window.history.back()">&#8592; Back</button>
     <h1><a href="https://tanvir210111.github.io/FOBS-Team/" target="_blank" rel="noopener">FOBS Subtitles</a></h1>
   </header>
 

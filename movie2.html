@@ -11,9 +11,70 @@
     a { color:#00ffc8; text-decoration:none; }
     a:hover { text-decoration:underline; }
     header {
-      background:#1a1a1a; padding:20px; text-align:center; box-shadow:0 2px 4px rgba(0,0,0,0.5);
+      background:#1a1a1a; 
+      padding: 20px 60px; 
+      text-align:center; 
+      box-shadow:0 2px 4px rgba(0,0,0,0.5);
+      position: relative;
+      min-height: 56px;
     }
-    header h1 { color:#00ffc8; margin:0; font-size:2.5em; }
+    header h1 {
+      color:#00ffc8;
+      margin:0;
+      font-size:2.5em;
+      line-height: 1;
+      position: relative;
+      left: 40px; /* leave space for back button */
+      display: inline-block;
+      z-index: 1;
+    }
+    header h1 a {
+      color:#00ffc8;
+      text-decoration:none;
+    }
+    header h1 a:hover {
+      text-decoration:underline;
+    }
+    /* Center header text on mobile */
+    @media (max-width: 600px) {
+      header h1 {
+        left: 0;
+        font-size: 1.8em;
+      }
+    }
+
+    /* Back button */
+    .back-button {
+      position: absolute;
+      left: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: #00ffc8;
+      border: none;
+      color: #000;
+      
+      padding: 6px 12px;
+      font-size: 0.85em;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+      box-shadow: 0 3px 8px rgba(0,255,200,0.6);
+      transition: background-color 0.2s;
+      white-space: nowrap;
+      z-index: 10;
+    }
+    .back-button:hover {
+      background-color: #00e0b3;
+    }
+    /* Smaller back button on mobile */
+    @media (max-width: 480px) {
+      .back-button {
+        padding: 4px 8px;
+        font-size: 0.75em;
+        left: 10px;
+      }
+    }
+
     .content {
       max-width:900px; margin:30px auto; padding:0 20px;
     }
@@ -63,8 +124,10 @@
 </head>
 <body>
   <header>
-    <h1>FOBS Subtitles</h1>
+    <button class="back-button" onclick="history.back()">← Back</button>
+    <h1><a href="https://tanvir210111.github.io/FOBS-Team/" target="_blank" rel="noopener">FOBS Subtitles</a></h1>
   </header>
+
 
   <div class="content">
     <img class="movie-poster" src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/VlgOREyY8pPjbsG3NLLJgRE7nv.jpg" alt="Myrnyi-21 Poster" />
@@ -74,7 +137,7 @@
     <div class="info">
       <span><strong>Subtitle Language:</strong> Bangla (বাংলা)</span>
       <span><strong>Subtitle Quality:</strong> WEB-Dl </span>
-      <span><strong>Upload Date:</strong> APril 8, 2025</span>
+      <span><strong>Upload Date:</strong> April 8, 2025</span>
       <span><strong>Movie Genre:</strong> Action, War, Drama</span>
       <span><strong>Movie Cast:</strong> Andrey Saminin, Maksym Devizorov, Evgeniy Lamakh</span>
       <span><strong>Country:</strong> Ukraine</span>
@@ -104,7 +167,7 @@
       </ul>
     </div>
 
-    <div class="info"></div>
+    <div class="info">
       <h3>Website Made By</h3>
       <ul>
         <li>Tanvir Hossain Khan</li>
