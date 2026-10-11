@@ -1765,12 +1765,37 @@ footer.site-footer {
   .site-title {
     font-size: 1.25rem;
   }
+  .spotlight-slide-inner {
+    padding: 30px 18px 36px;
+  }
+  .spotlight-title {
+    font-size: 1.55rem;
+    margin-bottom: 8px;
+  }
+  .spotlight-desc {
+    font-size: 0.82rem;
+    line-height: 1.5;
+    margin-bottom: 16px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
   .spotlight-actions {
-    flex-direction: column;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
   }
   .btn-cyan, .btn-glass {
-    width: 100%;
+    width: auto;
+    padding: 8px 14px;
+    font-size: 0.8rem;
+    display: inline-flex;
+    align-items: center;
     justify-content: center;
+    gap: 6px;
   }
   .movie-card-body {
     padding: 8px 5px;
