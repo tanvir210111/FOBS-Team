@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://tanvir210111.github.io/FOBS-Team/sitemap.xml

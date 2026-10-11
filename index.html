@@ -1,313 +1,725 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>FOBS Subtitles - Bangla Subtitle Downloads</title>
-  <style>
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #0d0d0d;
-      color: #fff;
-    }
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FOBS Subtitles - High-Quality Bangla Subtitles Hub</title>
+  <meta name="description" content="Download high-quality Bangla subtitles for latest movies and drama series by FOBS Team. Direct fast download links with 1080p and 720p releases." />
+  <meta name="keywords" content="Bangla Subtitle, FOBS Team, Bangla Sub, Movie Subtitle, K-Drama Bangla, C-Drama Bangla, Hollywood Bangla Sub" />
+  <meta name="author" content="Tanvir Hossain Khan - FOBS Team" />
 
-    header {
-      background-color: #1a1a1a;
-      padding: 20px;
-      text-align: center;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.5);
-    }
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="FOBS Subtitles - High-Quality Bangla Subtitles Hub" />
+  <meta property="og:description" content="High-Quality Bangla Subtitles for Movies & TV Series by FOBS Team. Direct fast download links." />
+  <meta property="og:image" content="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/3R3dXO2nm8JyR5NG7SEfii7RzlV.jpg" />
 
-    header h1 {
-      margin: 0;
-      color: #00ffc8;
-      font-size: 2.5em;
-      cursor: pointer;
-    }
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="FOBS Subtitles - High-Quality Bangla Subtitles Hub" />
+  <meta name="twitter:description" content="High-Quality Bangla Subtitles for Movies & TV Series by FOBS Team." />
 
-    header h1 a {
-      color: #00ffc8;
-      text-decoration: none;
-      display: inline-block;
-      width: max-content;
-    }
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎬</text></svg>" />
 
-    header p {
-      margin: 5px 0 0;
-      color: #ccc;
-      font-size: 1em;
-    }
-
-    
-    .filters {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      justify-content: center;
-      padding: 20px;
-      background-color: #121212;
-    }
-
-    .filters input, .filters select {
-      padding: 10px;
-      border-radius: 5px;
-      border: none;
-      font-size: 1em;
-    }
-
-    .container {
-      padding: 30px 20px;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 20px;
-      max-width: 1200px;
-      margin: auto;
-    }
-
-    .movie-card {
-      background-color: #1c1c1c;
-      border-radius: 8px;
-      overflow: hidden;
-      text-align: center;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.4);
-      transition: transform 0.3s ease;
-    }
-
-    .movie-card:hover {
-      transform: scale(1.05);
-    }
-
-    .movie-card img {
-      width: 100%;
-      height: 280px;
-      object-fit: cover;
-    }
-
-    .movie-info {
-      padding: 10px;
-    }
-
-    .movie-title {
-      font-size: 1.1em;
-      color: #00ffc8;
-      margin: 10px 0;
-    }
-
-    .movie-year {
-      font-size: 0.9em;
-      color: #bbb;
-      margin-bottom: 10px;
-    }
-
-    .download-btn {
-      background-color: #00ffc8;
-      color: #000;
-      padding: 8px 15px;
-      text-decoration: none;
-      border-radius: 5px;
-      font-weight: bold;
-      transition: background-color 0.2s;
-      display: inline-block;
-      cursor: pointer;
-    }
-
-    .download-btn:hover {
-      background-color: #00e0b3;
-    }
-
-    footer {
-      background-color: #1a1a1a;
-      color: #aaa;
-      text-align: center;
-      padding: 20px;
-      font-size: 0.9em;
-      margin-top: 50px;
-    }
-  </style>
+  <!-- Shared CSS -->
+  <link rel="stylesheet" href="css/style.css" />
 </head>
+
 <body>
 
-  <header>
-    <h1><a href="https://tanvir210111.github.io/FOBS-Team/" target="_blank" rel="noopener noreferrer">FOBS Subtitles</a></h1>
-    <p>High-Quality Bangla Subtitles for Movies &amp; TV Shows</p>
+  <!-- Site Header & Navigation -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="logo-wrapper">
+        <div class="logo-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="4" width="20" height="16" rx="3" ry="3"></rect>
+            <path d="M7 15h4M15 15h2M7 11h10"></path>
+          </svg>
+        </div>
+        <div class="logo-text-group">
+          <span class="site-title">FOBS SUBTITLES</span>
+          <span class="site-tagline">বাংলা সাবটাইটেল হাব • Official</span>
+        </div>
+      </a>
+
+      <!-- Desktop & Mobile Navigation Links -->
+      <nav class="site-nav" id="siteNav">
+        <ul class="nav-links">
+          <li><a href="index.html" class="nav-link active">Home</a></li>
+          <li><a href="#latest" class="nav-link">Latest</a></li>
+          <li><a href="#series" class="nav-link">TV &amp; Web Series</a></li>
+          <li><a href="#movies" class="nav-link">Movies</a></li>
+          <li><a href="community.html" class="nav-link">Community</a></li>
+          <li><a href="request.html" class="nav-link">Request Subtitle</a></li>
+          <li><a href="about.html" class="nav-link">About Us</a></li>
+          <li><a href="contact.html" class="nav-link">Contact</a></li>
+        </ul>
+
+        <div class="header-cta-group">
+          <a href="community.html" class="community-cta-btn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+              <circle cx="9" cy="7" r="4"></circle>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+            </svg>
+            <span>Join Community</span>
+          </a>
+        </div>
+      </nav>
+
+      <!-- Mobile Hamburger Button -->
+      <button class="mobile-menu-btn" id="mobileMenuToggle" aria-label="Toggle navigation menu" aria-expanded="false">
+        ☰
+      </button>
+    </div>
   </header>
 
-  
-  <!-- 🔍 Search & Filter Section -->
-  <div class="filters">
-    <input type="text" id="searchInput" placeholder="Search by title..." oninput="filterMovies()">
-    <select id="yearFilter" onchange="filterMovies()">
-      <option value="">All Years</option>
-      <option value="2025">2025</option>
-      <option value="2023">2023</option>
-      <option value="2021">2021</option>
-      <option value="2020">2020</option>
-      <option value="2018">2018</option>
-    </select>
-  </div>
+  <!-- Hero Featured Spotlight Release (Interactive 4-Slide Slider) -->
+  <section class="hero-spotlight" aria-label="Featured & Latest Subtitle Releases">
+    <div class="spotlight-slider-wrapper" id="spotlightSlider">
+      
+      <!-- Slide Track -->
+      <div class="spotlight-slides-track" id="spotlightTrack">
 
-  <div class="container">
-    <!-- Movie 1 -->
-    <a href="movie1.html" style="text-decoration: none; color: inherit;">
-      <div class="movie-card" data-title="Omniscient Reader: The Prophecy" data-year="2025">
-        <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/3R3dXO2nm8JyR5NG7SEfii7RzlV.jpg" alt="Omniscient Reader: The Prophecy">
-        <div class="movie-info">
-          <div class="movie-title">Omniscient Reader</div>
-          <div class="movie-year">(2025)</div>
-          <span class="download-btn">Click for Details</span>
+        <!-- Slide 1: Doctor X: Mafia in White (Featured K-Drama) -->
+        <div class="spotlight-slide active" data-slide-index="0">
+          <div class="spotlight-slide-backdrop" style="background-image: url('images/covers/doctor_x_cover.jpg'); --slide-pos: 78% 2%; --slide-pos-mob: 75% 1%;"></div>
+          <div class="spotlight-slide-overlay"></div>
+          
+          <div class="spotlight-slide-inner">
+            <div class="spotlight-content">
+              <div class="spotlight-tag">
+                ★ FEATURED NEW RELEASE • 📺 K-DRAMA
+              </div>
+              <h2 class="spotlight-title">Doctor X: Mafia in White</h2>
+              <div class="spotlight-meta">
+                <span class="pill-badge cyan">বাংলা সাবটাইটেল (Bangla)</span>
+                <span class="pill-badge">2026</span>
+                <span class="pill-badge">Mystery, Crime, Medical</span>
+                <span class="pill-badge">South Korea</span>
+                <span class="pill-badge">12 Episodes</span>
+              </div>
+              <p class="spotlight-desc">
+                In a hospital dominated by ego and corruption, an enigmatic but brilliant surgeon arrives — taking on seemingly impossible cases amid fierce opposition. Complete FOBS Bangla subtitles.
+              </p>
+              <div class="spotlight-actions">
+                <a href="series/South%20Korea/K-Drama/series12.html" class="btn-cyan">
+                  ⬇ Download Subtitle &amp; Details
+                </a>
+                <a href="series/South%20Korea/K-Drama/series12.html#trailer" class="btn-glass">
+                  ▶ Watch Trailer
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Slide 2: Omniscient Reader (Featured Movie) -->
+        <div class="spotlight-slide" data-slide-index="1">
+          <div class="spotlight-slide-backdrop" style="background-image: url('images/covers/omniscient_reader_cover.jpg'); --slide-pos: 68% 3%; --slide-pos-mob: 64% 1%;"></div>
+          <div class="spotlight-slide-overlay"></div>
+          
+          <div class="spotlight-slide-inner">
+            <div class="spotlight-content">
+              <div class="spotlight-tag">
+                ★ FEATURED RELEASE • 🎬 MOVIE
+              </div>
+              <h2 class="spotlight-title">Omniscient Reader: The Prophecy</h2>
+              <div class="spotlight-meta">
+                <span class="pill-badge cyan">বাংলা সাবটাইটেল (Bangla)</span>
+                <span class="pill-badge">2025</span>
+                <span class="pill-badge">Action, Fantasy</span>
+                <span class="pill-badge">South Korea</span>
+                <span class="pill-badge">01:53:46</span>
+              </div>
+              <p class="spotlight-desc">
+                A thrilling fantasy drama about a man who knows the ending of a novel that becomes reality. Official high-speed Bangla subtitles created exclusively by FOBS Team.
+              </p>
+              <div class="spotlight-actions">
+                <a href="movie/South%20Korea/K-Movie/movie1.html" class="btn-cyan">
+                  ⬇ Download Subtitle &amp; Details
+                </a>
+                <a href="movie/South%20Korea/K-Movie/movie1.html#trailer" class="btn-glass">
+                  ▶ Watch Trailer
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 3: Undercover High School (Latest K-Drama) -->
+        <div class="spotlight-slide" data-slide-index="2">
+          <div class="spotlight-slide-backdrop" style="background-image: url('images/covers/undercover_high_school_cover.jpg'); --slide-pos: 80% 2%; --slide-pos-mob: 75% 1%;"></div>
+          <div class="spotlight-slide-overlay"></div>
+          
+          <div class="spotlight-slide-inner">
+            <div class="spotlight-content">
+              <div class="spotlight-tag">
+                🔥 LATEST K-DRAMA RELEASE • 📺 SERIES
+              </div>
+              <h2 class="spotlight-title">Undercover High School</h2>
+              <div class="spotlight-meta">
+                <span class="pill-badge cyan">বাংলা সাবটাইটেল (Bangla)</span>
+                <span class="pill-badge">2025</span>
+                <span class="pill-badge">Action, Comedy</span>
+                <span class="pill-badge">South Korea</span>
+                <span class="pill-badge">12 Episodes</span>
+              </div>
+              <p class="spotlight-desc">
+                An elite NIS agent goes undercover as a high school student to track down the Emperor Gold bars. Complete action, comedy, and romance with FOBS Bangla subtitles.
+              </p>
+              <div class="spotlight-actions">
+                <a href="series/South%20Korea/K-Drama/series5.html" class="btn-cyan">
+                  ⬇ Download Subtitle &amp; Details
+                </a>
+                <a href="series/South%20Korea/K-Drama/series5.html#trailer" class="btn-glass">
+                  ▶ Watch Trailer
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 4: The First Frost (Latest C-Drama) -->
+        <div class="spotlight-slide" data-slide-index="3">
+          <div class="spotlight-slide-backdrop" style="background-image: url('images/covers/the_first_frost_cover.jpg'); --slide-pos: 82% 1%; --slide-pos-mob: 80% 0%;"></div>
+          <div class="spotlight-slide-overlay"></div>
+          
+          <div class="spotlight-slide-inner">
+            <div class="spotlight-content">
+              <div class="spotlight-tag">
+                🔥 LATEST C-DRAMA RELEASE • 📺 SERIES
+              </div>
+              <h2 class="spotlight-title">The First Frost (难哄)</h2>
+              <div class="spotlight-meta">
+                <span class="pill-badge cyan">বাংলা সাবটাইটেল (Bangla)</span>
+                <span class="pill-badge">2025</span>
+                <span class="pill-badge">Romance, Youth</span>
+                <span class="pill-badge">China</span>
+                <span class="pill-badge">32 Episodes</span>
+              </div>
+              <p class="spotlight-desc">
+                The beloved drama continuing the Hidden Love universe. Follow Wen Yifan and Sang Yan with exclusive, high-sync Bangla subtitles crafted by FOBS Team.
+              </p>
+              <div class="spotlight-actions">
+                <a href="series/China/C-Drama/series4.html" class="btn-cyan">
+                  ⬇ Download Subtitle &amp; Details
+                </a>
+                <a href="series/China/C-Drama/series4.html#trailer" class="btn-glass">
+                  ▶ Watch Trailer
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 5: Warrior Nun (Featured Hollywood Series) -->
+        <div class="spotlight-slide" data-slide-index="4">
+          <div class="spotlight-slide-backdrop" style="background-image: url('images/covers/warrior_nun_cover.jpg'); --slide-pos: 52% 2%; --slide-pos-mob: 50% 1%;"></div>
+          <div class="spotlight-slide-overlay"></div>
+          
+          <div class="spotlight-slide-inner">
+            <div class="spotlight-content">
+              <div class="spotlight-tag">
+                ★ FEATURED HOLLYWOOD SERIES • 📺 SERIES
+              </div>
+              <h2 class="spotlight-title">Warrior Nun (Season 1-2)</h2>
+              <div class="spotlight-meta">
+                <span class="pill-badge cyan">বাংলা সাবটাইটেল (Bangla)</span>
+                <span class="pill-badge">2020</span>
+                <span class="pill-badge">Action, Fantasy</span>
+                <span class="pill-badge">United States</span>
+                <span class="pill-badge">Complete Series</span>
+              </div>
+              <p class="spotlight-desc">
+                An orphaned teen wakes up in a morgue and discovers she has superpowers as the Halo-Bearer for demon-hunting nuns. Complete series Bangla subtitles by FOBS Team.
+              </p>
+              <div class="spotlight-actions">
+                <a href="series/United%20States/Hollywood/series3.html" class="btn-cyan">
+                  ⬇ Download Subtitle &amp; Details
+                </a>
+                <a href="series/United%20States/Hollywood/series3.html#trailer" class="btn-glass">
+                  ▶ Watch Trailer
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Pagination Indicator Dots -->
+      <div class="spotlight-indicators" id="sliderDots">
+        <button class="slider-dot active" data-slide-to="0" aria-label="Slide 1: Doctor X" aria-current="true"></button>
+        <button class="slider-dot" data-slide-to="1" aria-label="Slide 2: Omniscient Reader" aria-current="false"></button>
+        <button class="slider-dot" data-slide-to="2" aria-label="Slide 3: Undercover High School" aria-current="false"></button>
+        <button class="slider-dot" data-slide-to="3" aria-label="Slide 4: The First Frost" aria-current="false"></button>
+        <button class="slider-dot" data-slide-to="4" aria-label="Slide 5: Warrior Nun" aria-current="false"></button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Section 1: Latest Bangla Subtitles -->
+  <section class="library-section" id="latest" aria-label="Latest Bangla Subtitle Releases">
+    <div class="section-head">
+      <h2 class="section-title">
+        <span class="section-title-icon">🔥</span> Latest Bangla Subtitles
+      </h2>
+      <span class="pill-badge cyan">Latest Releases</span>
+    </div>
+
+    <div class="movie-grid">
+      <!-- 1. Doctor X: Mafia in White -->
+      <a href="series/South%20Korea/K-Drama/series12.html" class="movie-card-anchor">
+        <article class="movie-card" data-title="Doctor X: Mafia in White" data-year="2026" data-country="South Korea" data-category="K-Drama" data-genre="Mystery Drama Crime Medical">
+          <div class="poster-box">
+            <div class="card-top-badges">
+              <span class="badge-tag-year">2026</span>
+              <span class="badge-tag-bangla">বাংলা সাব</span>
+            </div>
+            <img src="https://image.tmdb.org/t/p/w600_and_h900_bestv2/a5kWnqgoTOWrv2xZoruQgTSbGgA.jpg" alt="Doctor X: Mafia in White Poster" width="220" height="330" loading="lazy" />
+          </div>
+          <div class="movie-card-body">
+            <div class="card-tags-row">
+              <span class="tag-industry">K-Drama</span>
+              <span class="tag-country">South Korea</span>
+            </div>
+            <h3 class="movie-card-title">Doctor X: Mafia in White</h3>
+            <span class="movie-card-submaker">By FOBS Team • (2026)</span>
+            <span class="card-download-btn">Click for Details</span>
+          </div>
+        </article>
+      </a>
+
+      <!-- 2. Omniscient Reader -->
+      <a href="movie/South%20Korea/K-Movie/movie1.html" class="movie-card-anchor">
+        <article class="movie-card" data-title="Omniscient Reader: The Prophecy" data-year="2025" data-country="South Korea" data-category="K-Movie" data-genre="Action Adventure Fantasy">
+          <div class="poster-box">
+            <div class="card-top-badges">
+              <span class="badge-tag-year">2025</span>
+              <span class="badge-tag-bangla">বাংলা সাব</span>
+            </div>
+            <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/3R3dXO2nm8JyR5NG7SEfii7RzlV.jpg" alt="Omniscient Reader: The Prophecy Poster" width="220" height="330" loading="lazy" />
+          </div>
+          <div class="movie-card-body">
+            <div class="card-tags-row">
+              <span class="tag-industry">K-Movie</span>
+              <span class="tag-country">South Korea</span>
+            </div>
+            <h3 class="movie-card-title">Omniscient Reader: The Prophecy</h3>
+            <span class="movie-card-submaker">By FOBS Team • (2025)</span>
+            <span class="card-download-btn">Click for Details</span>
+          </div>
+        </article>
+      </a>
+
+      <!-- 3. Undercover High School -->
+      <a href="series/South%20Korea/K-Drama/series5.html" class="movie-card-anchor">
+        <article class="movie-card" data-title="Undercover High School" data-year="2025" data-country="South Korea" data-category="K-Drama" data-genre="Action Comedy Romance Crime">
+          <div class="poster-box">
+            <div class="card-top-badges">
+              <span class="badge-tag-year">2025</span>
+              <span class="badge-tag-bangla">বাংলা সাব</span>
+            </div>
+            <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/qLWqaHiJpUbtlUKVxRneWBnTKTd.jpg" alt="Undercover High School Poster" width="220" height="330" loading="lazy" />
+          </div>
+          <div class="movie-card-body">
+            <div class="card-tags-row">
+              <span class="tag-industry">K-Drama</span>
+              <span class="tag-country">South Korea</span>
+            </div>
+            <h3 class="movie-card-title">Undercover High School</h3>
+            <span class="movie-card-submaker">By FOBS Team • (2025)</span>
+            <span class="card-download-btn">Click for Details</span>
+          </div>
+        </article>
+      </a>
+
+      <!-- 4. The First Frost -->
+      <a href="series/China/C-Drama/series4.html" class="movie-card-anchor">
+        <article class="movie-card" data-title="The First Frost" data-year="2025" data-country="China" data-category="C-Drama" data-genre="Romance Drama">
+          <div class="poster-box">
+            <div class="card-top-badges">
+              <span class="badge-tag-year">2025</span>
+              <span class="badge-tag-bangla">বাংলা সাব</span>
+            </div>
+            <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/iqFr4kgIdJU73YoJr4Vdf7gFZqr.jpg" alt="The First Frost Poster" width="220" height="330" loading="lazy" />
+          </div>
+          <div class="movie-card-body">
+            <div class="card-tags-row">
+              <span class="tag-industry">C-Drama</span>
+              <span class="tag-country">China</span>
+            </div>
+            <h3 class="movie-card-title">The First Frost</h3>
+            <span class="movie-card-submaker">By FOBS Team • (2025)</span>
+            <span class="card-download-btn">Click for Details</span>
+          </div>
+        </article>
+      </a>
+
+      <!-- 5. My Dearest Nemesis -->
+      <a href="series/South%20Korea/K-Drama/series6.html" class="movie-card-anchor">
+        <article class="movie-card" data-title="My Dearest Nemesis" data-year="2025" data-country="South Korea" data-category="K-Drama" data-genre="Comedy Romance">
+          <div class="poster-box">
+            <div class="card-top-badges">
+              <span class="badge-tag-year">2025</span>
+              <span class="badge-tag-bangla">বাংলা সাব</span>
+            </div>
+            <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/obxTkvATqU8a65XDOFOQeZKd3PF.jpg" alt="My Dearest Nemesis Poster" width="220" height="330" loading="lazy" />
+          </div>
+          <div class="movie-card-body">
+            <div class="card-tags-row">
+              <span class="tag-industry">K-Drama</span>
+              <span class="tag-country">South Korea</span>
+            </div>
+            <h3 class="movie-card-title">My Dearest Nemesis</h3>
+            <span class="movie-card-submaker">By FOBS Team • (2025)</span>
+            <span class="card-download-btn">Click for Details</span>
+          </div>
+        </article>
+      </a>
+    </div>
+  </section>
+
+  <!-- Section 2: TV and Web Series -->
+  <section class="library-section" id="series" aria-label="TV and Web Series Subtitles">
+    <div class="section-head">
+      <h2 class="section-title">
+        <span class="section-title-icon">📺</span> TV &amp; Web Series
+      </h2>
+      <span class="pill-badge cyan">9 Series</span>
+    </div>
+
+    <div class="movie-grid">
+      <!-- 1. Doctor X: Mafia in White -->
+      <a href="series/South%20Korea/K-Drama/series12.html" class="movie-card-anchor">
+        <article class="movie-card" data-title="Doctor X: Mafia in White" data-year="2026" data-country="South Korea" data-category="K-Drama" data-genre="Mystery Drama Crime Medical">
+          <div class="poster-box">
+            <div class="card-top-badges">
+              <span class="badge-tag-year">2026</span>
+              <span class="badge-tag-bangla">বাংলা সাব</span>
+            </div>
+            <img src="https://image.tmdb.org/t/p/w600_and_h900_bestv2/a5kWnqgoTOWrv2xZoruQgTSbGgA.jpg" alt="Doctor X: Mafia in White Poster" width="220" height="330" loading="lazy" />
+          </div>
+          <div class="movie-card-body">
+            <div class="card-tags-row">
+              <span class="tag-industry">K-Drama</span>
+              <span class="tag-country">South Korea</span>
+            </div>
+            <h3 class="movie-card-title">Doctor X: Mafia in White</h3>
+            <span class="movie-card-submaker">By FOBS Team • (2026)</span>
+            <span class="card-download-btn">Click for Details</span>
+          </div>
+        </article>
+      </a>
+
+      <!-- 2. Undercover High School -->
+      <a href="series/South%20Korea/K-Drama/series5.html" class="movie-card-anchor">
+        <article class="movie-card" data-title="Undercover High School" data-year="2025" data-country="South Korea" data-category="K-Drama" data-genre="Action Comedy Romance Crime">
+          <div class="poster-box">
+            <div class="card-top-badges">
+              <span class="badge-tag-year">2025</span>
+              <span class="badge-tag-bangla">বাংলা সাব</span>
+            </div>
+            <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/qLWqaHiJpUbtlUKVxRneWBnTKTd.jpg" alt="Undercover High School Poster" width="220" height="330" loading="lazy" />
+          </div>
+          <div class="movie-card-body">
+            <div class="card-tags-row">
+              <span class="tag-industry">K-Drama</span>
+              <span class="tag-country">South Korea</span>
+            </div>
+            <h3 class="movie-card-title">Undercover High School</h3>
+            <span class="movie-card-submaker">By FOBS Team • (2025)</span>
+            <span class="card-download-btn">Click for Details</span>
+          </div>
+        </article>
+      </a>
+
+      <!-- 2. The First Frost -->
+      <a href="series/China/C-Drama/series4.html" class="movie-card-anchor">
+        <article class="movie-card" data-title="The First Frost" data-year="2025" data-country="China" data-category="C-Drama" data-genre="Romance Drama">
+          <div class="poster-box">
+            <div class="card-top-badges">
+              <span class="badge-tag-year">2025</span>
+              <span class="badge-tag-bangla">বাংলা সাব</span>
+            </div>
+            <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/iqFr4kgIdJU73YoJr4Vdf7gFZqr.jpg" alt="The First Frost Poster" width="220" height="330" loading="lazy" />
+          </div>
+          <div class="movie-card-body">
+            <div class="card-tags-row">
+              <span class="tag-industry">C-Drama</span>
+              <span class="tag-country">China</span>
+            </div>
+            <h3 class="movie-card-title">The First Frost</h3>
+            <span class="movie-card-submaker">By FOBS Team • (2025)</span>
+            <span class="card-download-btn">Click for Details</span>
+          </div>
+        </article>
+      </a>
+
+      <!-- 3. Warrior Nun -->
+      <a href="series/United%20States/Hollywood/series3.html" class="movie-card-anchor">
+        <article class="movie-card" data-title="Warrior Nun" data-year="2020" data-country="United States" data-category="Hollywood" data-genre="Action Fantasy Science Fiction">
+          <div class="poster-box">
+            <div class="card-top-badges">
+              <span class="badge-tag-year">2020</span>
+              <span class="badge-tag-bangla">বাংলা সাব</span>
+            </div>
+            <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/fLP0mA7FiERZhDP1NJUaHpm6XM8.jpg" alt="Warrior Nun Poster" width="220" height="330" loading="lazy" />
+          </div>
+          <div class="movie-card-body">
+            <div class="card-tags-row">
+              <span class="tag-industry">Hollywood</span>
+              <span class="tag-country">USA</span>
+            </div>
+            <h3 class="movie-card-title">Warrior Nun (Season 1-2)</h3>
+            <span class="movie-card-submaker">By FOBS Team • (2020)</span>
+            <span class="card-download-btn">Click for Details</span>
+          </div>
+        </article>
+      </a>
+
+      <!-- 4. My Dearest Nemesis -->
+      <a href="series/South%20Korea/K-Drama/series6.html" class="movie-card-anchor">
+        <article class="movie-card" data-title="My Dearest Nemesis" data-year="2025" data-country="South Korea" data-category="K-Drama" data-genre="Comedy Romance">
+          <div class="poster-box">
+            <div class="card-top-badges">
+              <span class="badge-tag-year">2025</span>
+              <span class="badge-tag-bangla">বাংলা সাব</span>
+            </div>
+            <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/obxTkvATqU8a65XDOFOQeZKd3PF.jpg" alt="My Dearest Nemesis Poster" width="220" height="330" loading="lazy" />
+          </div>
+          <div class="movie-card-body">
+            <div class="card-tags-row">
+              <span class="tag-industry">K-Drama</span>
+              <span class="tag-country">South Korea</span>
+            </div>
+            <h3 class="movie-card-title">My Dearest Nemesis</h3>
+            <span class="movie-card-submaker">By FOBS Team • (2025)</span>
+            <span class="card-download-btn">Click for Details</span>
+          </div>
+        </article>
+      </a>
+
+      <!-- 5. High School Return of a Gangster -->
+      <a href="series/South%20Korea/K-Drama/series7.html" class="movie-card-anchor">
+        <article class="movie-card" data-title="High School Return of a Gangster" data-year="2024" data-country="South Korea" data-category="K-Drama" data-genre="Action Fantasy Comedy">
+          <div class="poster-box">
+            <div class="card-top-badges">
+              <span class="badge-tag-year">2024</span>
+              <span class="badge-tag-bangla">বাংলা সাব</span>
+            </div>
+            <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/bK5kGsWq9vGALbDgPmNiLFNFVI1.jpg" alt="High School Return of a Gangster Poster" width="220" height="330" loading="lazy" />
+          </div>
+          <div class="movie-card-body">
+            <div class="card-tags-row">
+              <span class="tag-industry">K-Drama</span>
+              <span class="tag-country">South Korea</span>
+            </div>
+            <h3 class="movie-card-title">High School Gangster</h3>
+            <span class="movie-card-submaker">By FOBS Team • (2024)</span>
+            <span class="card-download-btn">Click for Details</span>
+          </div>
+        </article>
+      </a>
+
+      <!-- 6. The Haunted Palace -->
+      <a href="series/South%20Korea/K-Drama/series8.html" class="movie-card-anchor">
+        <article class="movie-card" data-title="The Haunted Palace" data-year="2025" data-country="South Korea" data-category="K-Drama" data-genre="Action Historical Comedy Romance Fantasy">
+          <div class="poster-box">
+            <div class="card-top-badges">
+              <span class="badge-tag-year">2025</span>
+              <span class="badge-tag-bangla">বাংলা সাব</span>
+            </div>
+            <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/nR1cuxMOPqHHapEzORa8RESKrWG.jpg" alt="The Haunted Palace Poster" width="220" height="330" loading="lazy" />
+          </div>
+          <div class="movie-card-body">
+            <div class="card-tags-row">
+              <span class="tag-industry">K-Drama</span>
+              <span class="tag-country">South Korea</span>
+            </div>
+            <h3 class="movie-card-title">The Haunted Palace</h3>
+            <span class="movie-card-submaker">By FOBS Team • (2025)</span>
+            <span class="card-download-btn">Click for Details</span>
+          </div>
+        </article>
+      </a>
+
+      <!-- 7. Welcome to Waikiki -->
+      <a href="series/South%20Korea/K-Drama/series9.html" class="movie-card-anchor">
+        <article class="movie-card" data-title="Welcome to Waikiki" data-year="2018" data-country="South Korea" data-category="K-Drama" data-genre="Comedy Life Youth Drama">
+          <div class="poster-box">
+            <div class="card-top-badges">
+              <span class="badge-tag-year">2018</span>
+              <span class="badge-tag-bangla">বাংলা সাব</span>
+            </div>
+            <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/pggzZamoLNTiRgoYz8WVCISMCqv.jpg" alt="Welcome to Waikiki Poster" width="220" height="330" loading="lazy" />
+          </div>
+          <div class="movie-card-body">
+            <div class="card-tags-row">
+              <span class="tag-industry">K-Drama</span>
+              <span class="tag-country">South Korea</span>
+            </div>
+            <h3 class="movie-card-title">Welcome to Waikiki</h3>
+            <span class="movie-card-submaker">By FOBS Team • (2018)</span>
+            <span class="card-download-btn">Click for Details</span>
+          </div>
+        </article>
+      </a>
+
+      <!-- 8. You Are My Hero -->
+      <a href="series/China/C-Drama/series10.html" class="movie-card-anchor">
+        <article class="movie-card" data-title="You Are My Hero" data-year="2021" data-country="China" data-category="C-Drama" data-genre="Military Romance Drama Medical">
+          <div class="poster-box">
+            <div class="card-top-badges">
+              <span class="badge-tag-year">2021</span>
+              <span class="badge-tag-bangla">বাংলা সাব</span>
+            </div>
+            <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/eeItxEkuGJXZ67vvHO4oNFEvgYT.jpg" alt="You Are My Hero Poster" width="220" height="330" loading="lazy" />
+          </div>
+          <div class="movie-card-body">
+            <div class="card-tags-row">
+              <span class="tag-industry">C-Drama</span>
+              <span class="tag-country">China</span>
+            </div>
+            <h3 class="movie-card-title">You Are My Hero</h3>
+            <span class="movie-card-submaker">By FOBS Team • (2021)</span>
+            <span class="card-download-btn">Click for Details</span>
+          </div>
+        </article>
+      </a>
+    </div>
+  </section>
+
+  <!-- Section 3: Movies -->
+  <section class="library-section" id="movies" aria-label="Movie Subtitles">
+    <div class="section-head">
+      <h2 class="section-title">
+        <span class="section-title-icon">🎬</span> Movies
+      </h2>
+      <span class="pill-badge cyan">3 Movies</span>
+    </div>
+
+    <div class="movie-grid">
+      <!-- 1. Omniscient Reader -->
+      <a href="movie/South%20Korea/K-Movie/movie1.html" class="movie-card-anchor">
+        <article class="movie-card" data-title="Omniscient Reader: The Prophecy" data-year="2025" data-country="South Korea" data-category="K-Movie" data-genre="Action Adventure Fantasy">
+          <div class="poster-box">
+            <div class="card-top-badges">
+              <span class="badge-tag-year">2025</span>
+              <span class="badge-tag-bangla">বাংলা সাব</span>
+            </div>
+            <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/3R3dXO2nm8JyR5NG7SEfii7RzlV.jpg" alt="Omniscient Reader: The Prophecy Poster" width="220" height="330" loading="lazy" />
+          </div>
+          <div class="movie-card-body">
+            <div class="card-tags-row">
+              <span class="tag-industry">K-Movie</span>
+              <span class="tag-country">South Korea</span>
+            </div>
+            <h3 class="movie-card-title">Omniscient Reader: The Prophecy</h3>
+            <span class="movie-card-submaker">By FOBS Team • (2025)</span>
+            <span class="card-download-btn">Click for Details</span>
+          </div>
+        </article>
+      </a>
+
+      <!-- 2. Myrnyi-21 -->
+      <a href="movie/Ukraine/Ukrainian%20Cinema/movie2.html" class="movie-card-anchor">
+        <article class="movie-card" data-title="Myrnyi-21" data-year="2023" data-country="Ukraine" data-category="Ukrainian Cinema" data-genre="Action War Drama">
+          <div class="poster-box">
+            <div class="card-top-badges">
+              <span class="badge-tag-year">2023</span>
+              <span class="badge-tag-bangla">বাংলা সাব</span>
+            </div>
+            <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/VlgOREyY8pPjbsG3NLLJgRE7nv.jpg" alt="Myrnyi-21 Poster" width="220" height="330" loading="lazy" />
+          </div>
+          <div class="movie-card-body">
+            <div class="card-tags-row">
+              <span class="tag-industry">Ukrainian Cinema</span>
+              <span class="tag-country">Ukraine</span>
+            </div>
+            <h3 class="movie-card-title">Myrnyi-21</h3>
+            <span class="movie-card-submaker">By FOBS Team • (2023)</span>
+            <span class="card-download-btn">Click for Details</span>
+          </div>
+        </article>
+      </a>
+
+      <!-- 3. Sgt. Stubby -->
+      <a href="movie/United%20States/Hollywood/movie11.html" class="movie-card-anchor">
+        <article class="movie-card" data-title="Sgt. Stubby: An American Hero" data-year="2018" data-country="United States" data-category="Hollywood" data-genre="Animation Adventure Family History War">
+          <div class="poster-box">
+            <div class="card-top-badges">
+              <span class="badge-tag-year">2018</span>
+              <span class="badge-tag-bangla">বাংলা সাব</span>
+            </div>
+            <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/o3eKgsZARPMrCoMZbPa3SI0La6H.jpg" alt="Sgt. Stubby Poster" width="220" height="330" loading="lazy" />
+          </div>
+          <div class="movie-card-body">
+            <div class="card-tags-row">
+              <span class="tag-industry">Hollywood</span>
+              <span class="tag-country">USA</span>
+            </div>
+            <h3 class="movie-card-title">Sgt. Stubby: An American Hero</h3>
+            <span class="movie-card-submaker">By FOBS Team • (2018)</span>
+            <span class="card-download-btn">Click for Details</span>
+          </div>
+        </article>
+      </a>
+    </div>
+  </section>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="logo-wrapper">
+          <div class="logo-icon" style="width: 34px; height: 34px;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+              <rect x="2" y="4" width="20" height="16" rx="3" ry="3"></rect>
+              <path d="M7 15h4M15 15h2M7 11h10"></path>
+            </svg>
+          </div>
+          <div class="logo-text-group">
+            <span class="site-title" style="font-size: 1.25rem;">FOBS SUBTITLES</span>
+            <span class="site-tagline">High-Quality Bangla Subtitles</span>
+          </div>
+        </div>
+
+        <ul class="footer-nav-links">
+          <li><a href="index.html" class="footer-nav-link">Home</a></li>
+          <li><a href="#latest" class="footer-nav-link">Latest Releases</a></li>
+          <li><a href="#series" class="footer-nav-link">TV &amp; Web Series</a></li>
+          <li><a href="#movies" class="footer-nav-link">Movies</a></li>
+          <li><a href="community.html" class="footer-nav-link">Join Community</a></li>
+          <li><a href="request.html" class="footer-nav-link">Request Subtitle</a></li>
+          <li><a href="about.html" class="footer-nav-link">About FOBS Team</a></li>
+          <li><a href="contact.html" class="footer-nav-link">Contact</a></li>
+          <li><a href="privacy.html" class="footer-nav-link">Privacy Policy</a></li>
+          <li><a href="terms.html" class="footer-nav-link">Terms &amp; Disclaimer</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-bottom">
+        <div>
+          &copy; 2025 <strong>FOBS Team</strong>. Subtitles crafted by <strong>Tanvir Hossain Khan</strong>. All rights reserved.
+        </div>
+        <div>
+          <button class="back-to-top-link" id="backToTopBtn">↑ Back to Top</button>
         </div>
       </div>
-    </a>
-
-    <!-- Movie 2 -->
-    <a href="movie2.html" style="text-decoration: none; color: inherit;">
-      <div class="movie-card" data-title="Myrnyi-21" data-year="2023">
-        <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/VlgOREyY8pPjbsG3NLLJgRE7nv.jpg" alt="Myrnyi-21">
-        <div class="movie-info">
-          <div class="movie-title">Myrnyi-21</div>
-          <div class="movie-year">(2023)</div>
-          <span class="download-btn">Click for Details</span>
-        </div>
-      </div>
-    </a>
-
-    <!-- Movie 3 -->
-    <a href="movie3.html" style="text-decoration: none; color: inherit;">
-      <div class="movie-card" data-title="Warrior Nun" data-year="2020">
-        <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/fLP0mA7FiERZhDP1NJUaHpm6XM8.jpg" alt="Warrior Nun">
-        <div class="movie-info">
-          <div class="movie-title">Warrior Nun</div>
-          <div class="movie-year">(2020)</div>
-          <span class="download-btn">Click for Details</span>
-        </div>
-      </div>
-    </a>
-
-    <!-- Movie 4 -->
-    <a href="movie4.html" style="text-decoration: none; color: inherit;">
-      <div class="movie-card" data-title="The First Frost" data-year="2025">
-        <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/iqFr4kgIdJU73YoJr4Vdf7gFZqr.jpg" alt="The First Frost">
-        <div class="movie-info">
-          <div class="movie-title">The First Frost</div>
-          <div class="movie-year">(2025)</div>
-          <span class="download-btn">Click for Details</span>
-        </div>
-      </div>
-    </a>
-
-    <!-- Movie 5 -->
-    <a href="movie5.html" style="text-decoration: none; color: inherit;">
-      <div class="movie-card" data-title="Undercover High Schoolt" data-year="2025">
-        <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/qLWqaHiJpUbtlUKVxRneWBnTKTd.jpg" alt="Undercover High School">
-        <div class="movie-info">
-          <div class="movie-title">Undercover High School</div>
-          <div class="movie-year">(2025)</div>
-          <span class="download-btn">Click for Details</span>
-        </div>
-      </div>
-    </a>
-
-    <!-- Movie 6 -->
-    <a href="movie6.html" style="text-decoration: none; color: inherit;">
-      <div class="movie-card" data-title="My Dearest Nemesis" data-year="2025">
-        <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/obxTkvATqU8a65XDOFOQeZKd3PF.jpg" alt="My Dearest Nemesis">
-        <div class="movie-info">
-          <div class="movie-title">My Dearest Nemesis</div>
-          <div class="movie-year">(2025)</div>
-          <span class="download-btn">Click for Details</span>
-        </div>
-      </div>
-    </a>
-
-    <!-- Movie 7 -->
-    <a href="movie7.html" style="text-decoration: none; color: inherit;">
-      <div class="movie-card" data-title="High School Return of a Gangster" data-year="2024">
-        <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/bK5kGsWq9vGALbDgPmNiLFNFVI1.jpg" alt="High School Return of a Gangster">
-        <div class="movie-info">
-          <div class="movie-title">High School Gangster</div>
-          <div class="movie-year">(2024)</div>
-          <span class="download-btn">Click for Details</span>
-        </div>
-      </div>
-    </a>
-
-    <!-- Movie 8 -->
-    <a href="movie8.html" style="text-decoration: none; color: inherit;">
-      <div class="movie-card" data-title="The Haunted Palace" data-year="2025">
-        <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/nR1cuxMOPqHHapEzORa8RESKrWG.jpg" alt="The Haunted Palace">
-        <div class="movie-info">
-          <div class="movie-title">The Haunted Palace</div>
-          <div class="movie-year">(2025)</div>
-          <span class="download-btn">Click for Details</span>
-        </div>
-      </div>
-    </a>
-
-    <!-- Movie 9 -->
-    <a href="movie9.html" style="text-decoration: none; color: inherit;">
-      <div class="movie-card" data-title="Welcome to Waikiki" data-year="2018">
-        <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/pggzZamoLNTiRgoYz8WVCISMCqv.jpg" alt="Welcome to Waikiki">
-        <div class="movie-info">
-          <div class="movie-title">Welcome to Waikiki</div>
-          <div class="movie-year">(2018)</div>
-          <span class="download-btn">Click for Details</span>
-        </div>
-      </div>
-    </a>
-
-    <!-- Movie 10 -->
-    <a href="movie10.html" style="text-decoration: none; color: inherit;">
-      <div class="movie-card" data-title="You Are My Hero" data-year="2021">
-        <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/eeItxEkuGJXZ67vvHO4oNFEvgYT.jpg" alt="You Are My Hero">
-        <div class="movie-info">
-          <div class="movie-title">You Are My Hero</div>
-          <div class="movie-year">(2021)</div>
-          <span class="download-btn">Click for Details</span>
-        </div>
-      </div>
-    </a>
-
-    <!-- Movie 11 -->
-    <a href="movie11.html" style="text-decoration: none; color: inherit;">
-      <div class="movie-card" data-title="Sgt. Stubby" data-year="2018">
-        <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/o3eKgsZARPMrCoMZbPa3SI0La6H.jpg" alt="Sgt. Stubby">
-        <div class="movie-info">
-          <div class="movie-title">Sgt. Stubby</div>
-          <div class="movie-year">(2018)</div>
-          <span class="download-btn">Click for Details</span>
-        </div>
-      </div>
-    </a>
-</div>
-
-  <footer>
-    &copy; 2025 FOBS Team. All rights reserved.
+    </div>
   </footer>
 
-  <!-- JavaScript: Search & Filter Logic -->
-  <script>
-    function filterMovies() {
-      const searchInput = document.getElementById("searchInput").value.toLowerCase();
-      const yearFilter = document.getElementById("yearFilter").value;
-      const cards = document.querySelectorAll(".movie-card");
-
-      cards.forEach(card => {
-        const title = card.getAttribute("data-title").toLowerCase();
-        const year = card.getAttribute("data-year");
-
-        const matchesSearch = title.includes(searchInput);
-        const matchesYear = yearFilter === "" || year === yearFilter;
-
-        if (matchesSearch && matchesYear) {
-          card.style.display = "block";
-        } else {
-          card.style.display = "none";
-        }
-      });
-    }
-  </script>
+  <!-- Main JavaScript -->
+  <script src="js/tmdb.js"></script>
+  <script src="js/main.js"></script>
 
 </body>
+
 </html>
