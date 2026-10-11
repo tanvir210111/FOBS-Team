@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initLibraryFilters();
   initBackToTop();
   highlightActiveNav();
+  initDetailsPageHero();
 });
 
 /* ==========================================================================
@@ -226,7 +227,7 @@ function initSpotlightSlider() {
 
   let currentIndex = 0;
   let autoplayTimer = null;
-  const AUTOPLAY_INTERVAL = 5500;
+  const AUTOPLAY_INTERVAL = 2500; // 2.5 seconds per slide
 
   // Dragging state
   let isDragging = false;
@@ -414,3 +415,102 @@ function initSpotlightSlider() {
   goToSlide(0);
   startAutoplay();
 }
+
+/* ==========================================================================
+   Details Page Hero Setup (Cover Photo Backdrop, Poster Left, Details Right)
+   ========================================================================== */
+function initDetailsPageHero() {
+  const wrapper = document.querySelector('.details-page-wrapper');
+  if (!wrapper) return;
+
+  const poster = wrapper.querySelector('.details-poster-hero');
+  if (!poster) return;
+
+  let heroCard = wrapper.querySelector('.details-hero-card');
+  const title = wrapper.querySelector('.details-heading-title');
+  const breadcrumbs = wrapper.querySelector('.breadcrumbs-bar');
+  const year = wrapper.querySelector('.details-heading-year');
+  const specsBox = wrapper.querySelector('.details-info-box');
+
+  const titleText = (title ? title.textContent : '').trim().toLowerCase();
+  const rootPath = getRelativePathToRoot();
+
+  // Determine cover photo URL
+  let coverUrl = '';
+  if (titleText.includes('doctor x')) {
+    coverUrl = rootPath + 'images/covers/doctor_x_cover.jpg';
+  } else if (titleText.includes('omniscient reader')) {
+    coverUrl = rootPath + 'images/covers/omniscient_reader_cover.jpg';
+  } else if (titleText.includes('undercover high school')) {
+    coverUrl = rootPath + 'images/covers/undercover_high_school_cover.jpg';
+  } else if (titleText.includes('first frost')) {
+    coverUrl = rootPath + 'images/covers/the_first_frost_cover.jpg';
+  } else if (titleText.includes('warrior nun')) {
+    coverUrl = rootPath + 'images/covers/warrior_nun_cover.jpg';
+  } else if (poster.src) {
+    coverUrl = poster.src;
+  }
+
+  if (!heroCard) {
+    if (!title || !specsBox) return;
+
+    heroCard = document.createElement('div');
+    heroCard.className = 'details-hero-card';
+
+    const overlay = document.createElement('div');
+    overlay.className = 'details-hero-overlay';
+    heroCard.appendChild(overlay);
+
+    const heroGrid = document.createElement('div');
+    heroGrid.className = 'details-hero-grid';
+
+    // Left Column: Poster
+    const posterCol = document.createElement('div');
+    posterCol.className = 'details-hero-poster-col';
+    posterCol.appendChild(poster);
+
+    // Right Column: Info & Specs
+    const infoCol = document.createElement('div');
+    infoCol.className = 'details-hero-info-col';
+    if (breadcrumbs) infoCol.appendChild(breadcrumbs);
+    infoCol.appendChild(title);
+    if (year) infoCol.appendChild(year);
+    infoCol.appendChild(specsBox);
+
+    heroGrid.appendChild(posterCol);
+    heroGrid.appendChild(infoCol);
+    heroCard.appendChild(heroGrid);
+
+    wrapper.insertBefore(heroCard, wrapper.firstChild);
+  }
+
+  // Set cover backdrop if not set inline
+  if (coverUrl && !heroCard.style.backgroundImage) {
+    heroCard.style.backgroundImage = `url('${coverUrl}')`;
+  }
+
+  // If TMDB is available, fetch official high-res backdrop
+  if (window.TMDB && !titleText.includes('doctor x') && !titleText.includes('omniscient reader') && !titleText.includes('undercover') && !titleText.includes('first frost') && !titleText.includes('warrior nun')) {
+    const cleanQuery = titleText.replace(/\(.*?\)/g, '').trim();
+    if (cleanQuery) {
+      TMDB.searchMulti(cleanQuery).then(data => {
+        const item = (data && data.results) ? data.results[0] : null;
+        if (item && item.backdrop_path) {
+          const bdUrl = TMDB.getImageUrl(item.backdrop_path, 'w1280');
+          if (bdUrl) {
+            heroCard.style.backgroundImage = `url('${bdUrl}')`;
+          }
+        }
+      }).catch(() => {});
+    }
+  }
+}
+
+function getRelativePathToRoot() {
+  const path = window.location.pathname;
+  if (path.includes('/series/') || path.includes('/movie/')) {
+    return '../../../';
+  }
+  return '';
+}
+
