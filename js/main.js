@@ -10,6 +10,8 @@ document.addEventListener('DOMContentLoaded', () => {
   initBackToTop();
   highlightActiveNav();
   initDetailsPageHero();
+  initLatestReleasesQueue();
+  initEpisodeDropdowns();
 });
 
 /* ==========================================================================
@@ -426,7 +428,19 @@ function initDetailsPageHero() {
   const poster = wrapper.querySelector('.details-poster-hero');
   if (!poster) return;
 
-  let heroCard = wrapper.querySelector('.details-hero-card');
+  // Clean up any legacy single-card hero wrapper if present
+  const oldLegacyCard = wrapper.querySelector('.details-hero-card');
+  if (oldLegacyCard && !wrapper.querySelector('.details-cover-banner')) {
+    const oldGrid = oldLegacyCard.querySelector('.details-hero-grid');
+    if (oldGrid) {
+      wrapper.insertBefore(oldGrid, oldLegacyCard);
+      oldGrid.className = 'details-body-grid';
+    }
+    oldLegacyCard.remove();
+  }
+
+  let coverBanner = wrapper.querySelector('.details-cover-banner');
+  let bodyGrid = wrapper.querySelector('.details-body-grid, .details-hero-grid');
   const title = wrapper.querySelector('.details-heading-title');
   const breadcrumbs = wrapper.querySelector('.breadcrumbs-bar');
   const year = wrapper.querySelector('.details-heading-year');
@@ -451,42 +465,48 @@ function initDetailsPageHero() {
     coverUrl = poster.src;
   }
 
-  if (!heroCard) {
-    if (!title || !specsBox) return;
-
-    heroCard = document.createElement('div');
-    heroCard.className = 'details-hero-card';
+  // 1. Create Standalone Cover Photo Banner (FIRST) if not present
+  if (!coverBanner) {
+    coverBanner = document.createElement('div');
+    coverBanner.className = 'details-cover-banner';
+    if (coverUrl) {
+      coverBanner.style.backgroundImage = `url('${coverUrl}')`;
+    }
 
     const overlay = document.createElement('div');
-    overlay.className = 'details-hero-overlay';
-    heroCard.appendChild(overlay);
+    overlay.className = 'details-cover-overlay';
+    coverBanner.appendChild(overlay);
 
-    const heroGrid = document.createElement('div');
-    heroGrid.className = 'details-hero-grid';
+    wrapper.insertBefore(coverBanner, wrapper.firstChild);
+  } else if (coverUrl && !coverBanner.style.backgroundImage) {
+    coverBanner.style.backgroundImage = `url('${coverUrl}')`;
+  }
+
+  // 2. Create Lower Details Grid (Poster on left, details on right) if not present
+  if (!bodyGrid) {
+    if (!title || !specsBox) return;
+
+    bodyGrid = document.createElement('div');
+    bodyGrid.className = 'details-body-grid';
 
     // Left Column: Poster
     const posterCol = document.createElement('div');
-    posterCol.className = 'details-hero-poster-col';
+    posterCol.className = 'details-poster-col';
     posterCol.appendChild(poster);
 
     // Right Column: Info & Specs
     const infoCol = document.createElement('div');
-    infoCol.className = 'details-hero-info-col';
+    infoCol.className = 'details-info-col';
     if (breadcrumbs) infoCol.appendChild(breadcrumbs);
     infoCol.appendChild(title);
     if (year) infoCol.appendChild(year);
     infoCol.appendChild(specsBox);
 
-    heroGrid.appendChild(posterCol);
-    heroGrid.appendChild(infoCol);
-    heroCard.appendChild(heroGrid);
+    bodyGrid.appendChild(posterCol);
+    bodyGrid.appendChild(infoCol);
 
-    wrapper.insertBefore(heroCard, wrapper.firstChild);
-  }
-
-  // Set cover backdrop if not set inline
-  if (coverUrl && !heroCard.style.backgroundImage) {
-    heroCard.style.backgroundImage = `url('${coverUrl}')`;
+    // Insert bodyGrid directly after coverBanner
+    coverBanner.parentNode.insertBefore(bodyGrid, coverBanner.nextSibling);
   }
 
   // If TMDB is available, fetch official high-res backdrop
@@ -497,8 +517,8 @@ function initDetailsPageHero() {
         const item = (data && data.results) ? data.results[0] : null;
         if (item && item.backdrop_path) {
           const bdUrl = TMDB.getImageUrl(item.backdrop_path, 'w1280');
-          if (bdUrl) {
-            heroCard.style.backgroundImage = `url('${bdUrl}')`;
+          if (bdUrl && coverBanner) {
+            coverBanner.style.backgroundImage = `url('${bdUrl}')`;
           }
         }
       }).catch(() => {});
@@ -513,4 +533,102 @@ function getRelativePathToRoot() {
   }
   return '';
 }
+
+/* ==========================================================================
+   Latest Releases Queue Manager (FIFO Max 5 Cards)
+   Rule: Always strictly keeps top 5 latest releases.
+   When a new card is added/uploaded, it is prepended at index 0 (top/first)
+   and the oldest/last card drops off from #latest.
+   ========================================================================== */
+function initLatestReleasesQueue() {
+  const latestSection = document.getElementById('latest');
+  if (!latestSection) return;
+  const grid = latestSection.querySelector('.movie-grid');
+  if (!grid) return;
+
+  function enforceLatestLimit() {
+    const cards = Array.from(grid.children).filter(el => el.classList.contains('movie-card-anchor') || el.matches('a'));
+    while (cards.length > 5) {
+      const removedCard = cards.pop();
+      if (removedCard) removedCard.remove();
+    }
+  }
+
+  // Enforce immediately on page load
+  enforceLatestLimit();
+
+  // Expose global method to add new upload/card to latest section
+  window.addNewUploadToLatest = function(cardNodeOrHtml) {
+    let cardElement;
+    if (typeof cardNodeOrHtml === 'string') {
+      const temp = document.createElement('div');
+      temp.innerHTML = cardNodeOrHtml.trim();
+      cardElement = temp.firstElementChild;
+    } else {
+      cardElement = cardNodeOrHtml;
+    }
+
+    if (!cardElement) return;
+
+    // Insert as first item (newest at the very beginning)
+    grid.insertBefore(cardElement, grid.firstElementChild);
+
+    // Enforce 5 card limit (drops last card)
+    enforceLatestLimit();
+  };
+
+  // Watch for any dynamic card insertions into the latest grid
+  if (window.MutationObserver) {
+    const observer = new MutationObserver((mutations) => {
+      let childListChanged = false;
+      for (const m of mutations) {
+        if (m.type === 'childList' && m.addedNodes.length > 0) {
+          childListChanged = true;
+          break;
+        }
+      }
+      if (childListChanged) {
+        observer.disconnect();
+        enforceLatestLimit();
+        observer.observe(grid, { childList: true });
+      }
+    });
+
+    observer.observe(grid, { childList: true });
+  }
+}
+
+/* ==========================================================================
+   Series Episode Subtitle Dropdown Accordion
+   ========================================================================== */
+function initEpisodeDropdowns() {
+  document.addEventListener('click', (e) => {
+    const toggleBtn = e.target.closest('.episode-toggle-btn');
+    if (toggleBtn) {
+      e.preventDefault();
+      const container = toggleBtn.closest('.episodes-dropdown-container');
+      if (!container) return;
+      const menu = container.querySelector('.episodes-dropdown-menu');
+      if (!menu) return;
+
+      const isExpanded = toggleBtn.classList.toggle('active');
+      toggleBtn.setAttribute('aria-expanded', isExpanded ? 'true' : 'false');
+      menu.classList.toggle('show', isExpanded);
+      return;
+    }
+
+    // Close when clicking anywhere outside
+    if (!e.target.closest('.episodes-dropdown-container')) {
+      document.querySelectorAll('.episode-toggle-btn.active').forEach((btn) => {
+        btn.classList.remove('active');
+        btn.setAttribute('aria-expanded', 'false');
+      });
+      document.querySelectorAll('.episodes-dropdown-menu.show').forEach((menu) => {
+        menu.classList.remove('show');
+      });
+    }
+  });
+}
+
+
 
