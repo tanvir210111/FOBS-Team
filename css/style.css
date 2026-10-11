@@ -444,7 +444,7 @@ header.site-header {
 
 @media (max-width: 860px) {
   .spotlight-slide {
-    min-height: 440px;
+    min-height: 420px;
   }
   .spotlight-slide-backdrop {
     background-position: var(--slide-pos, right 2%) !important;
@@ -456,11 +456,43 @@ header.site-header {
       linear-gradient(0deg, rgba(10, 14, 23, 0.82) 0%, transparent 40%);
   }
   .spotlight-slide-inner {
-    padding: 38px 24px 44px;
-    max-width: 720px;
+    padding: 32px 20px 40px;
+    max-width: 100%;
   }
   .spotlight-title {
-    font-size: 1.85rem;
+    font-size: 1.65rem;
+    margin-bottom: 8px;
+  }
+  .desktop-only-inline {
+    display: none !important;
+  }
+  .spotlight-desc {
+    font-size: 0.84rem;
+    line-height: 1.5;
+    margin-bottom: 16px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .spotlight-actions {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    gap: 8px !important;
+    flex-wrap: nowrap !important;
+    width: auto !important;
+  }
+  .btn-cyan, .btn-glass {
+    width: auto !important;
+    flex: 0 0 auto !important;
+    white-space: nowrap !important;
+    padding: 8px 14px !important;
+    font-size: 0.8rem !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 6px !important;
   }
   .spotlight-nav-btn {
     display: none;
@@ -1765,6 +1797,9 @@ footer.site-footer {
   .site-title {
     font-size: 1.25rem;
   }
+  .desktop-only-inline {
+    display: none;
+  }
   .spotlight-slide-inner {
     padding: 30px 18px 36px;
   }
@@ -1786,16 +1821,21 @@ footer.site-footer {
     flex-direction: row;
     align-items: center;
     gap: 8px;
-    flex-wrap: wrap;
+    flex-wrap: nowrap !important;
+    width: 100%;
   }
   .btn-cyan, .btn-glass {
+    flex: 1 1 0;
+    min-width: 0;
     width: auto;
-    padding: 8px 14px;
-    font-size: 0.8rem;
+    white-space: nowrap !important;
+    padding: 8px 10px;
+    font-size: 0.76rem;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 6px;
+    gap: 5px;
+    text-align: center;
   }
   .movie-card-body {
     padding: 8px 5px;
