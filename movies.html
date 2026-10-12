@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>All Movies Bangla Subtitles (31 Movies) | FOBS Team</title>
+  <meta name="description" content="Browse all 31 verified Movies with high-quality Bangla Subtitles by FOBS Team. Instant direct SRT downloads." />
+  <link rel="icon" type="image/png" href="images/favicon.png" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body class="catalog-page-body">
+
+  <!-- Main Navigation Header -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="logo-wrapper">
+        <div class="logo-icon">
+          <img src="images/logo.png" alt="FOBS Team Logo" />
+        </div>
+        <div class="logo-text-group">
+          <span class="site-title">FOBS Team</span>
+          <span class="site-tagline">FOBS Subtitles</span>
+        </div>
+      </a>
+
+      <nav class="site-nav" id="siteNav">
+        <ul class="nav-links">
+          <li><a href="index.html" class="nav-link ">Home</a></li>
+          <li><a href="series.html" class="nav-link ">TV &amp; Web Series</a></li>
+          <li><a href="movies.html" class="nav-link active">Movies</a></li>
+          <li><a href="paid.html" class="nav-link ">Paid</a></li>
+          <li><a href="free.html" class="nav-link ">Free</a></li>
+          <li><a href="request.html" class="nav-link ">Request Subtitle</a></li>
+        </ul>
+
+        <div class="header-search-box">
+          <form id="headerSearchForm" action="index.html" method="GET" class="header-search-form">
+            <div class="header-search-icon">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+            </div>
+            <input type="text" name="search" id="liveSearchInput" placeholder="Search any Movie or Series..." class="header-search-input" autocomplete="off" />
+            <button type="submit" id="searchSubmitBtn" class="header-search-btn">Search</button>
+          </form>
+        </div>
+
+        <div class="header-cta-group">
+          <a href="community.html" class="community-cta-btn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+              <circle cx="9" cy="7" r="4"></circle>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+            </svg>
+            <span>Join Community</span>
+          </a>
+        </div>
+      </nav>
+
+      <button class="mobile-menu-btn" id="mobileMenuToggle" aria-label="Toggle navigation menu" aria-expanded="false">
+        ☰
+      </button>
+    </div>
+  </header>
+
+  <!-- Hero Banner -->
+  <section class="catalog-hero-banner">
+    <div class="catalog-hero-inner">
+      <div class="catalog-badge">🎬 Complete Movies Library</div>
+      <h1 class="catalog-title">All Movies Bangla Subtitles</h1>
+      <p class="catalog-subtitle">Explore 31 verified Movie subtitles with direct high-speed downloads by FOBS Team.</p>
+    </div>
+  </section>
+
+  <!-- Catalog Main Section -->
+  <section class="library-section" id="catalogSection">
+    <div class="section-head">
+      <div class="section-head-left">
+        <h2 class="section-title">
+          <span class="section-title-icon">🎬</span> Movies Library
+        </h2>
+        <span class="pill-badge cyan">Total 31</span>
+      </div>
+      <div class="section-head-actions">
+        <!-- Industry Filter Dropdown (to the left of Sort) -->
+        <div class="filter-dropdown-wrapper">
+          <button type="button" class="btn-head-industry" data-target="catalogGrid" data-selected="all" aria-label="Filter by Industry" aria-haspopup="true" aria-expanded="false">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"></rect>
+              <line x1="7" y1="2" x2="7" y2="22"></line><line x1="17" y1="2" x2="17" y2="22"></line>
+              <line x1="2" y1="12" x2="22" y2="12"></line><line x1="2" y1="7" x2="7" y2="7"></line>
+              <line x1="2" y1="17" x2="7" y2="17"></line><line x1="17" y1="17" x2="22" y2="17"></line>
+              <line x1="17" y1="7" x2="22" y2="7"></line>
+            </svg>
+            <span class="industry-text">Industry: All</span>
+            <span class="industry-arrow">▾</span>
+          </button>
+          <div class="industry-dropdown-menu">
+            <button type="button" class="industry-option active" data-filter="all">
+              <span class="opt-icon">✨</span> All Industries (31)
+            </button>
+            <button type="button" class="industry-option" data-filter="hollywood">
+              <span class="opt-icon">🎬</span> Hollywood (11)
+            </button>
+            <button type="button" class="industry-option" data-filter="k-drama">
+              <span class="opt-icon">📺</span> Korean Cinema (8)
+            </button>
+            <button type="button" class="industry-option" data-filter="c-drama">
+              <span class="opt-icon">🏮</span> Chinese Cinema (5)
+            </button>
+            <button type="button" class="industry-option" data-filter="j-drama">
+              <span class="opt-icon">🌸</span> Japanese Cinema (2)
+            </button>
+            <button type="button" class="industry-option" data-filter="turkish-drama">
+              <span class="opt-icon">🕌</span> Turkish Cinema (1)
+            </button>
+            <button type="button" class="industry-option" data-filter="world-cinema">
+              <span class="opt-icon">🌍</span> World Cinema (4)
+            </button>
+          </div>
+        </div>
+        <div class="sort-dropdown-wrapper">
+          <button type="button" class="btn-head-sort" data-target="catalogGrid" data-selected="name-asc" aria-label="Sort options" aria-haspopup="true" aria-expanded="false">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M11 5h10M11 9h7M11 13h4"></path>
+              <path d="M3 17l3 3 3-3"></path>
+              <path d="M6 18V4"></path>
+            </svg>
+            <span class="sort-text">Sort: A to Z</span>
+            <span class="sort-arrow">▾</span>
+          </button>
+          <div class="sort-dropdown-menu">
+            <button type="button" class="sort-option active" data-sort="name-asc">
+              <span class="sort-opt-icon">🔤</span> Name (A to Z)
+            </button>
+            <button type="button" class="sort-option" data-sort="name-desc">
+              <span class="sort-opt-icon">🔤</span> Name (Z to A)
+            </button>
+            <button type="button" class="sort-option" data-sort="date-desc">
+              <span class="sort-opt-icon">📅</span> Date (Latest)
+            </button>
+            <button type="button" class="sort-option" data-sort="date-asc">
+              <span class="sort-opt-icon">📅</span> Date (Oldest)
+            </button>
+          </div>
+        </div>
+        <button type="button" class="btn-head-apply" data-target="catalogGrid" aria-label="Apply Filters">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="7.5"></circle>
+            <line x1="21" y1="21" x2="16.5" y2="16.5"></line>
+          </svg>
+          <span>Apply Filters</span>
+        </button>
+        <button type="button" class="btn-head-reset" data-target="catalogGrid" aria-label="Reset Filter">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path>
+            <path d="M3 3v5h5"></path>
+          </svg>
+          <span>Reset Filter</span>
+        </button>
+      </div>
+    </div>
+
+    
+
+    <!-- Movie Card Grid -->
+    <div class="movie-grid" id="catalogGrid">
+      <!-- 200 Pounds Beauty -->
+      <a href="movie/South%20Korea/K-Movie/movie_128075.html" class="movie-card-anchor" data-category="k-movie" data-type="movie">
+        <article class="movie-card" data-title="200 Pounds Beauty" data-year="2023" data-country="South Korea" data-category="K-Movie" data-genre="Drama, Comedy, Romance">
+          <div class="poster-box">
+            <div class="card-top-badges">
+              <span class="badge-tag-year badge-tag-free">Free</span>
+              <span class="badge-tag-bangla">বাংলা সাব</span>
+            </div>
+            <img src="https://image.tmdb.org/t/p/w600_and_h900_bestv2/daD4wsrfo16ksDtwh6tyv0BnhEu.jpg" alt="200 Pounds Beauty Poster" width="220" height="330" loading="lazy" />
+          </div>
+          <div class="movie-card-body">
+            <div class="card-tags-row">
+              <span class="tag-industry">K-Movie</span>
+              <span class="tag-country">South Korea</span>
+            </div>
+            <h3 class="movie-card-title">200 Pounds Beauty</h3>
+            <span class="movie-card-submaker">By FOBS Team • (2023)</span>
+            <span class="card-download-btn">Click for Details</span>
+          </div>
+        </article>
+      </a>
+      <!-- Alem-i Cin -->
+      <a href="movie/Turkey/Turkish%20Cinema/movie_146639.html" class="movie-card-anchor" data-category="world-cinema" data-type="movie">
+        <article class="movie-card" data-title="Alem-i Cin" data-year="2018" data-country="Turkey" data-category="World Cinema" data-genre="Horror">
+          <div class="poster-box">
+            <div class="card-top-badges">
+              <span class="badge-tag-year badge-tag-free">Free</span>
+              <span class="badge-tag-bangla">বাংলা সাব</span>
+            </div>
+            <img src="https://image.tmdb.org/t/p/w600_and_h900_bestv2/f9lXb8jmaPMtKZsSJXTBVMTG58J.jpg" alt="Alem-i Cin Poster" width="220" height="330" loading="lazy" />
+          </div>
+          <div class="movie-card-body">
+            <div class="card-tags-row">
+              <span class="tag-industry">World Cinema</span>
+              <span class="tag-country">Turkey</span>
+            </div>
+            <h3 class="movie-card-title">Alem-i Cin</h3>
+            <span class="movie-card-submaker">By FOBS Team • (2018)</span>
+            <span class="card-download-btn">Click for Details</span>
+          </div>
+        </article>
+      </a>
+      <!-- Alienoid: Return to the Future -->
+      <a href="movie/South%20Korea/K-Movie/movie_125240.html" class="movie-card-anchor" data-category="k-movie" data-type="movie">
+        <article class="movie-card" data-title="Alienoid: Return to the Future" data-year="2024" data-country="South Korea" data-category="K-Movie" data-genre="Action, Fantasy, Adventure, Science Fiction">
+          <div class="poster-box">
+            <div class="card-top-badges">
+              <span class="badge-tag-year badge-tag-free">Free</span>
+              <span class="badge-tag-bangla">বাংলা সাব</span>
+            </div>
+            <img src="https://image.tmdb.org/t/p/w600_and_h900_bestv2/4RClncz0GTKPZzSAcAalHCw0h3g.jpg" alt="Alienoid: Return to the Future Poster" width="220" height="330" loading="lazy" />
+          </div>
+          <div class="movie-card-body">
+            <div class="card-tags-row">
+              <span class="tag-industry">K-Movie</span>
+              <span class="tag-country">South Korea</span>
+            </div>
+            <h3 class="movie-card-title">Alienoid: Return to the Future</h3>
+            <span class="movie-card-submaker">By FOBS Team • (2024)</span>
+            <span class="card-download-btn">Click for Details</span>
+          </div>
+        </article>
+      </a>
+      <!-- American Assassin -->
+      <a href="movie/United%20States/Hollywood/movie_18691.html" class="movie-card-anchor" data-category="hollywood" data-type="movie">
+        <article class="movie-card" data-title="American Assassin" data-year="2017" data-country="United States" data-category="Hollywood" data-genre="Action, Adventure, Thriller">
+          <div class="poster-box">
+            <div class="card-top-badges">
+              <span class="badge-tag-year badge-tag-free">Free</span>
+              <span class="badge-tag-bangla">বাংলা সাব</span>
+            </div>
+            <img src="https://image.tmdb.org/t/p/w600_and_h900_bestv2/w6vjeHx3UEaBXIyc8VFqyZYKznD.jpg" alt="American Assassin Poster" width="220" height="330" loading="lazy" />
+          </div>
+          <div class="movie-card-body">
+            <div class="card-tags-row">
+              <span class="tag-industry">Hollywood</span>
+              <span class="tag-country">United States</span>
+            </div>
+            <h3 class="movie-card-title">American Assassin</h3>
+            <span class="movie-card-submaker">By FOBS Team • (2017)</span>
+            <span class="card-download-btn">Click for Details</span>
+          </div>
+        </article>
+      </a>
+      <!-- Black Cat, White Cat -->
+      <a href="movie/France/French%20Cinema/movie_20997.html" class="movie-card-anchor" data-category="world-cinema" data-type="movie">
+        <article class="movie-card" data-title="Black Cat, White Cat" data-year="1998" data-country="France" data-category="World Cinema" data-genre="Comedy, Romance, Crime">
+          <div class="poster-box">
+            <div class="card-top-badges">
+              <span class="badge-tag-year badge-tag-free">Free</span>
+              <span class="badge-tag-bangla">বাংলা সাব</span>
+            </div>
+            <img src="https://image.tmdb.org/t/p/w600_and_h900_bestv2/xxQ9jgYf3xhbUTW98VtCjA1wMLv.jpg" alt="Black Cat, White Cat Poster" width="220" height="330" loading="lazy" />
+          </div>
+          <div class="movie-card-body">
+            <div class="card-tags-row">
+              <span class="tag-industry">World Cinema</span>
+              <span class="tag-country">France</span>
+            </div>
+            <h3 class="movie-card-title">Black Cat, White Cat</h3>
+            <span class="movie-card-submaker">By FOBS Team • (1998)</span>
+            <span class="card-download-btn">Click for Details</span>
+          </div>
+        </article>
+      </a>
+      <!-- Blood &amp; Gold -->
+      <a href="movie/Germany/European%20Cinema/movie_21599.html" class="movie-card-anchor" data-category="world-cinema" data-type="movie">
+        <article class="movie-card" data-title="Blood &amp; Gold" data-year="2023" data-country="Germany" data-category="World Cinema" data-genre="Action, Drama, War">
+          <div class="poster-box">
+            <div class="card-top-badges">
+              <span class="badge-tag-year badge-tag-free">Free</span>
+              <span class="badge-tag-bangla">বাংলা সাব</span>
+            </div>
+            <img src="https://image.tmdb.org/t/p/w600_and_h900_bestv2/oLRQP5cEjiT1DxeIHUYEV96Ijum.jpg" alt="Blood &amp; Gold Poster" width="220" height="330" loading="lazy" />
+          </div>
+          <div class="movie-card-body">
+            <div class="card-tags-row">
+              <span class="tag-industry">World Cinema</span>
+              <span class="tag-country">Germany</span>
+            </div>
+            <h3 class="movie-card-title">Blood &amp; Gold</h3>
+            <span class="movie-card-submaker">By FOBS Team • (2023)</span>
+            <span class="card-download-btn">Click for Details</span>
+          </div>
+        </article>
+      </a>
+      <!-- Cheer Up, Mr. Lee -->
+      <a href="movie/South%20Korea/K-Movie/movie_25530.html" class="movie-card-anchor" data-category="k-movie" data-type="movie">
+        <article class="movie-card" data-title="Cheer Up, Mr. Lee" data-year="2019" data-country="South Korea" data-category="K-Movie" data-genre="Drama, Comedy, Family">
+          <div class="poster-box">
+            <div class="card-top-badges">
+              <span class="badge-tag-year badge-tag-free">Free</span>
+              <span class="badge-tag-bangla">বাংলা সাব</span>
+            </div>
+            <img src="https://image.tmdb.org/t/p/w600_and_h900_bestv2/hqwWHeHRHSMiw6xxMvLvFZYMSX4.jpg" alt="Cheer Up, Mr. Lee Poster" width="220" height="330" loading="lazy" />
+          </div>
+          <div class="movie-card-body">
+            <div class="card-tags-row">
+              <span class="tag-industry">K-Movie</span>
+              <span class="tag-country">South Korea</span>
+            </div>
+            <h3 class="movie-card-title">Cheer Up, Mr. Lee</h3>
+            <span class="movie-card-submaker">By FOBS Team • (2019)</span>
+            <span class="card-download-btn">Click for Details</span>
+          </div>
+        </article>
+      </a>
+      <!-- Cold Pursuit -->
+      <a href="movie/United%20States/Hollywood/movie_30712.html" class="movie-card-anchor" data-category="hollywood" data-type="movie">
+        <article class="movie-card" data-title="Cold Pursuit" data-year="2019" data-country="United States" data-category="Hollywood" data-genre="Crime, Action, Drama">
+          <div class="poster-box">
+            <div class="card-top-badges">
+              <span class="badge-tag-year badge-tag-free">Free</span>
+              <span class="badge-tag-bangla">বাংলা সাব</span>
+            </div>
+            <img src="https://image.tmdb.org/t/p/w600_and_h900_bestv2/5RILVnOchQyL1LbcVzmabipdJfc.jpg" alt="Cold Pursuit Poster" width="220" height="330" loading="lazy" />
+          </div>
+          <div class="movie-card-body">
+            <div class="card-tags-row">
+              <span class="tag-industry">Hollywood</span>
+              <span class="tag-country">United States</span>
+            </div>
+            <h3 class="movie-card-title">Cold Pursuit</h3>
+            <span class="movie-card-submaker">By FOBS Team • (2019)</span>
+            <span class="card-download-btn">Click for Details</span>
+          </div>
+        </article>
+      </a>
+      <!-- Extinction -->
+      <a href="movie/United%20States/Hollywood/movie_35495.html" class="movie-card-anchor" data-category="hollywood" data-type="movie">
+        <article class="movie-card" data-title="Extinction" data-year="2018" data-country="United States" data-category="Hollywood" data-genre="Action, Drama, Science Fiction, Thriller">
+          <div class="poster-box">
+            <div class="card-top-badges">
+              <span class="badge-tag-year badge-tag-free">Free</span>
+              <span class="badge-tag-bangla">বাংলা সাব</span>
+            </div>
+            <img src="https://image.tmdb.org/t/p/w600_and_h900_bestv2/qjnNdjrZIdi7d316SjjkgEjJRSg.jpg" alt="Extinction Poster" width="220" height="330" loading="lazy" />
+          </div>
+          <div class="movie-card-body">
+            <div class="card-tags-row">
+              <span class="tag-industry">Hollywood</span>
+              <span class="tag-country">United States</span>
+            </div>
+            <h3 class="movie-card-title">Extinction</h3>
+            <span class="movie-card-submaker">By FOBS Team • (2018)</span>
+            <span class="card-download-btn">Click for Details</span>
+          </div>
+        </article>
+      </a>
+      <!-- Gentleman -->
+      <a href="movie/South%20Korea/K-Movie/movie_39457.html" class="movie-card-anchor" data-category="k-movie" data-type="movie">
+        <article class="movie-card" data-title="Gentleman" data-year="2022" data-country="South Korea" data-category="K-Movie" data-genre="Drama">
+          <div class="poster-box">
+            <div class="card-top-badges">
+              <span class="badge-tag-year badge-tag-free">Free</span>
+              <span class="badge-tag-bangla">বাংলা সাব</span>
+            </div>
+            <img src="images/covers/doctor_x_cover.jpg" alt="Gentleman Poster" width="220" height="330" loading="lazy" />
+          </div>
+          <div class="movie-card-body">
+            <div class="card-tags-row">
+              <span class="tag-industry">K-Movie</span>
+              <span class="tag-country">South Korea</span>
+            </div>
+            <h3 class="movie-card-title">Gentleman</h3>
+            <span class="movie-card-submaker">By FOBS Team • (2022)</span>
+            <span class="card-download-btn">Click for Details</span>
+          </div>
+        </article>
+      </a>
+      <!-- Havoc -->
+      <a href="movie/United%20States/Hollywood/movie_147624.html" class="movie-card-anchor" data-category="hollywood" data-type="movie">
+        <article class="movie-card" data-title="Havoc" data-year="2025" data-country="United States" data-category="Hollywood" data-genre="Action, Crime, Thriller, Drama">
+          <div class="poster-box">
+            <div class="card-top-badges">
+              <span class="badge-tag-year badge-tag-free">Free</span>
+              <span class="badge-tag-bangla">বাংলা সাব</span>
+            </div>
+            <img src="https://image.tmdb.org/t/p/w600_and_h900_bestv2/r46leE6PSzLR3pnVzaxx5Q30yUF.jpg" alt="Havoc Poster" width="220" height="330" loading="lazy" />
+          </div>
+          <div class="movie-card-body">
+            <div class="card-tags-row">
+              <span class="tag-industry">Hollywood</span>
+              <span class="tag-country">United States</span>
+            </div>
+            <h3 class="movie-card-title">Havoc</h3>
+            <span class="movie-card-submaker">By FOBS Team • (2025)</span>
+            <span class="card-download-btn">Click for Details</span>
+          </div>
+        </article>
+      </a>
+      <!-- Herb -->
+      <a href="movie/South%20Korea/K-Movie/movie_43124.html" class="movie-card-anchor" data-category="k-movie" data-type="movie">
+        <article class="movie-card" data-title="Herb" data-year="2007" data-country="South Korea" data-category="K-Movie" data-genre="Drama">
+          <div class="poster-box">
+            <div class="card-top-badges">
+              <span class="badge-tag-year badge-tag-free">Free</span>
+              <span class="badge-tag-bangla">বাংলা সাব</span>
+            </div>
+            <img src="https://image.tmdb.org/t/p/w600_and_h900_bestv2/1L00l89pb89qjgHfwn3ZX4q5U6F.jpg" alt="Herb Poster" width="220" height="330" loading="lazy" />
+          </div>
+          <div class="movie-card-body">
+            <div class="card-tags-row">
+              <span class="tag-industry">K-Movie</span>
+              <span class="tag-country">South Korea</span>
+            </div>
+            <h3 class="movie-card-title">Herb</h3>
+            <span class="movie-card-submaker">By FOBS Team • (2007)</span>
+            <span class="card-download-btn">Click for Details</span>
+          </div>
+        </article>
+      </a>
+      <!-- Let Me Eat Your Pancreas -->
+      <a href="movie/Japan/Japanese%20Cinema/movie_57449.html" class="movie-card-anchor" data-category="world-cinema" data-type="movie">
+        <article class="movie-card" data-title="Let Me Eat Your Pancreas" data-year="2017" data-country="Japan" data-category="World Cinema" data-genre="Drama, Romance">
+          <div class="poster-box">
+            <div class="card-top-badges">
+              <span class="badge-tag-year badge-tag-free">Free</span>
+              <span class="badge-tag-bangla">বাংলা সাব</span>
+            </div>
+            <img src="https://image.tmdb.org/t/p/w600_and_h900_bestv2/yC3XsfjdjKPX8M6iXda77Ll6rUi.jpg" alt="Let Me Eat Your Pancreas Poster" width="220" height="330" loading="lazy" />
+          </div>
+          <div class="movie-card-body">
+            <div class="card-tags-row">
+              <span class="tag-industry">World Cinema</span>
+              <span class="tag-country">Japan</span>
+            </div>
+            <h3 class="movie-card-title">Let Me Eat Your Pancreas</h3>
+            <span class="movie-card-submaker">By FOBS Team • (2017)</span>
+            <span class="card-download-btn">Click for Details</span>
+          </div>
+        </article>
+      </a>
+      <!-- Man in Love -->
+      <a href="movie/South%20Korea/K-Movie/movie_60582.html" class="movie-card-anchor" data-category="k-movie" data-type="movie">
+        <article class="movie-card" data-title="Man in Love" data-year="2014" data-country="South Korea" data-category="K-Movie" data-genre="Drama, Romance">
+          <div class="poster-box">
+            <div class="card-top-badges">
+              <span class="badge-tag-year badge-tag-free">Free</span>
+              <span class="badge-tag-bangla">বাংলা সাব</span>
+            </div>
+            <img src="https://image.tmdb.org/t/p/w600_and_h900_bestv2/cuyZXiAZtyuZZC60PICF5fGrJqh.jpg" alt="Man in Love Poster" width="220" height="330" loading="lazy" />
+          </div>
+          <div class="movie-card-body">
+            <div class="card-tags-row">
+              <span class="tag-industry">K-Movie</span>
+              <span class="tag-country">South Korea</span>
+            </div>
+            <h3 class="movie-card-title">Man in Love</h3>
+            <span class="movie-card-submaker">By FOBS Team • (2014)</span>
+            <span class="card-download-btn">Click for Details</span>
+          </div>
+        </article>
+      </a>
+      <!-- Meet Joe Black -->
+      <a href="movie/United%20States/Hollywood/movie_58328.html" class="movie-card-anchor" data-category="hollywood" data-type="movie">
+        <article class="movie-card" data-title="Meet Joe Black" data-year="1998" data-country="United States" data-category="Hollywood" data-genre="Fantasy, Drama, Romance">
+          <div class="poster-box">
+            <div class="card-top-badges">
+              <span class="badge-tag-year badge-tag-free">Free</span>
+              <span class="badge-tag-bangla">বাংলা সাব</span>
+            </div>
+            <img src="https://image.tmdb.org/t/p/w600_and_h900_bestv2/fDPAjvfPMomkKF7cMRmL5Anak61.jpg" alt="Meet Joe Black Poster" width="220" height="330" loading="lazy" />
+          </div>
+          <div class="movie-card-body">
+            <div class="card-tags-row">
+              <span class="tag-industry">Hollywood</span>
+              <span class="tag-country">United States</span>
+            </div>
+            <h3 class="movie-card-title">Meet Joe Black</h3>
+            <span class="movie-card-submaker">By FOBS Team • (1998)</span>
+            <span class="card-download-btn">Click for Details</span>
+          </div>
+        </article>
+      </a>
+      <!-- Moonfall -->
+      <a href="movie/United%20States/Hollywood/movie_61390.html" class="movie-card-anchor" data-category="hollywood" data-type="movie">
+        <article class="movie-card" data-title="Moonfall" data-year="2022" data-country="United States" data-category="Hollywood" data-genre="Science Fiction, Adventure, Action">
+          <div class="poster-box">
+            <div class="card-top-badges">
+              <span class="badge-tag-year badge-tag-free">Free</span>
+              <span class="badge-tag-bangla">বাংলা সাব</span>
+            </div>
+            <img src="https://image.tmdb.org/t/p/w600_and_h900_bestv2/odVv1sqVs0KxBXiA8bhIBlPgalx.jpg" alt="Moonfall Poster" width="220" height="330" loading="lazy" />
+          </div>
+          <div class="movie-card-body">
+            <div class="card-tags-row">
+              <span class="tag-industry">Hollywood</span>
+              <span class="tag-country">United States</span>
+            </div>
+            <h3 class="movie-card-title">Moonfall</h3>
+            <span class="movie-card-submaker">By FOBS Team • (2022)</span>
+            <span class="card-download-btn">Click for Details</span>
+          </div>
+        </article>
+      </a>
+      <!-- My Name Is Vendetta -->
+      <a href="movie/IT/World%20Cinema/movie_61949.html" class="movie-card-anchor" data-category="world-cinema" data-type="movie">
+        <article class="movie-card" data-title="My Name Is Vendetta" data-year="2022" data-country="IT" data-category="World Cinema" data-genre="Action, Crime, Adventure, Thriller">
+          <div class="poster-box">
+            <div class="card-top-badges">
+              <span class="badge-tag-year badge-tag-free">Free</span>
+              <span class="badge-tag-bangla">বাংলা সাব</span>
+            </div>
+            <img src="https://image.tmdb.org/t/p/w600_and_h900_bestv2/7l3war94J4tRyWUiLAGokr3ViF2.jpg" alt="My Name Is Vendetta Poster" width="220" height="330" loading="lazy" />
+          </div>
+          <div class="movie-card-body">
+            <div class="card-tags-row">
+              <span class="tag-industry">World Cinema</span>
+              <span class="tag-country">IT</span>
+            </div>
+            <h3 class="movie-card-title">My Name Is Vendetta</h3>
+            <span class="movie-card-submaker">By FOBS Team • (2022)</span>
+            <span class="card-download-btn">Click for Details</span>
+          </div>
+        </article>
+      </a>
+      <!-- New Gods: Yang Jian -->
+      <a href="movie/China/Chinese%20Cinema/movie_63413.html" class="movie-card-anchor" data-category="chinese-cinema" data-type="movie">
+        <article class="movie-card" data-title="New Gods: Yang Jian" data-year="2022" data-country="China" data-category="Chinese Cinema" data-genre="Animation, Adventure, Fantasy, Comedy">
+          <div class="poster-box">
+            <div class="card-top-badges">
+              <span class="badge-tag-year badge-tag-free">Free</span>
+              <span class="badge-tag-bangla">বাংলা সাব</span>
+            </div>
+            <img src="https://image.tmdb.org/t/p/w600_and_h900_bestv2/tW5dFOemV4d7hxTcVI2bu4u0C9z.jpg" alt="New Gods: Yang Jian Poster" width="220" height="330" loading="lazy" />
+          </div>
+          <div class="movie-card-body">
+            <div class="card-tags-row">
+              <span class="tag-industry">Chinese Cinema</span>
+              <span class="tag-country">China</span>
+            </div>
+            <h3 class="movie-card-title">New Gods: Yang Jian</h3>
+            <span class="movie-card-submaker">By FOBS Team • (2022)</span>
+            <span class="card-download-btn">Click for Details</span>
+          </div>
+        </article>
+      </a>
+      <!-- Omniscient Reader: The Prophecy -->
+      <a href="movie/South%20Korea/K-Movie/movie1.html" class="movie-card-anchor" data-category="k-movie" data-type="movie">
+        <article class="movie-card" data-title="Omniscient Reader: The Prophecy" data-year="2025" data-country="South Korea" data-category="K-Movie" data-genre="Action, Adventure, Fantasy">
+          <div class="poster-box">
+            <div class="card-top-badges">
+              <span class="badge-tag-year badge-tag-free">Free</span>
+              <span class="badge-tag-bangla">বাংলা সাব</span>
+            </div>
+            <img src="https://image.tmdb.org/t/p/w600_and_h900_bestv2/uXdKubg6wHG9poAsKweUM1zQpdy.jpg" alt="Omniscient Reader: The Prophecy Poster" width="220" height="330" loading="lazy" />
+          </div>
+          <div class="movie-card-body">
+            <div class="card-tags-row">
+              <span class="tag-industry">K-Movie</span>
+              <span class="tag-country">South Korea</span>
+            </div>
+            <h3 class="movie-card-title">Omniscient Reader: The Prophecy</h3>
+            <span class="movie-card-submaker">By FOBS Team • (2025)</span>
+            <span class="card-download-btn">Click for Details</span>
+          </div>
+        </article>
+      </a>
+      <!-- Real -->
+      <a href="movie/South%20Korea/K-Movie/movie_71245.html" class="movie-card-anchor" data-category="k-movie" data-type="movie">
+        <article class="movie-card" data-title="Real" data-year="2017" data-country="South Korea" data-category="K-Movie" data-genre="Action, Crime, Thriller">
+          <div class="poster-box">
+            <div class="card-top-badges">
+              <span class="badge-tag-year badge-tag-free">Free</span>
+              <span class="badge-tag-bangla">বাংলা সাব</span>
+            </div>
+            <img src="https://image.tmdb.org/t/p/w500/ccmDZaOKBwDKW8wPs4rV64ue9wN.jpg" alt="Real Poster" width="220" height="330" loading="lazy" />
+          </div>
+          <div class="movie-card-body">
+            <div class="card-tags-row">
+              <span class="tag-industry">K-Movie</span>
+              <span class="tag-country">South Korea</span>
+            </div>
+            <h3 class="movie-card-title">Real</h3>
+            <span class="movie-card-submaker">By FOBS Team • (2017)</span>
+            <span class="card-download-btn">Click for Details</span>
+          </div>
+        </article>
+      </a>
+      <!-- Ride On -->
+      <a href="movie/China/Chinese%20Cinema/movie_75618.html" class="movie-card-anchor" data-category="chinese-cinema" data-type="movie">
+        <article class="movie-card" data-title="Ride On" data-year="2023" data-country="China" data-category="Chinese Cinema" data-genre="Drama">
+          <div class="poster-box">
+            <div class="card-top-badges">
+              <span class="badge-tag-year badge-tag-free">Free</span>
+              <span class="badge-tag-bangla">বাংলা সাব</span>
+            </div>
+            <img src="images/covers/doctor_x_cover.jpg" alt="Ride On Poster" width="220" height="330" loading="lazy" />
+          </div>
+          <div class="movie-card-body">
+            <div class="card-tags-row">
+              <span class="tag-industry">Chinese Cinema</span>
+              <span class="tag-country">China</span>
+            </div>
+            <h3 class="movie-card-title">Ride On</h3>
+            <span class="movie-card-submaker">By FOBS Team • (2023)</span>
+            <span class="card-download-btn">Click for Details</span>
+          </div>
+        </article>
+      </a>
+      <!-- Sakra -->
+      <a href="movie/China/Chinese%20Cinema/movie_74140.html" class="movie-card-anchor" data-category="chinese-cinema" data-type="movie">
+        <article class="movie-card" data-title="Sakra" data-year="2023" data-country="China" data-category="Chinese Cinema" data-genre="Action, Adventure">
+          <div class="poster-box">
+            <div class="card-top-badges">
+              <span class="badge-tag-year badge-tag-free">Free</span>
+              <span class="badge-tag-bangla">বাংলা সাব</span>
+            </div>
+            <img src="https://image.tmdb.org/t/p/w600_and_h900_bestv2/jGKCpt3zzbGZbgoza6HCvecqElM.jpg" alt="Sakra Poster" width="220" height="330" loading="lazy" />
+          </div>
+          <div class="movie-card-body">
+            <div class="card-tags-row">
+              <span class="tag-industry">Chinese Cinema</span>
+              <span class="tag-country">China</span>
+            </div>
+            <h3 class="movie-card-title">Sakra</h3>
+            <span class="movie-card-submaker">By FOBS Team • (2023)</span>
+            <span class="card-download-btn">Click for Details</span>
+          </div>
+        </article>
+      </a>
+      <!-- Saltburn -->
+      <a href="movie/United%20Kingdom/British%20Cinema/movie_125984.html" class="movie-card-anchor" data-category="world-cinema" data-type="movie">
+        <article class="movie-card" data-title="Saltburn" data-year="2023" data-country="United Kingdom" data-category="World Cinema" data-genre="Drama, Comedy, Thriller">
+          <div class="poster-box">
+            <div class="card-top-badges">
+              <span class="badge-tag-year badge-tag-free">Free</span>
+              <span class="badge-tag-bangla">বাংলা সাব</span>
+            </div>
+            <img src="https://image.tmdb.org/t/p/w600_and_h900_bestv2/zGTfMwG112BC66mpaveVxoWPOaB.jpg" alt="Saltburn Poster" width="220" height="330" loading="lazy" />
+          </div>
+          <div class="movie-card-body">
+            <div class="card-tags-row">
+              <span class="tag-industry">World Cinema</span>
+              <span class="tag-country">United Kingdom</span>
+            </div>
+            <h3 class="movie-card-title">Saltburn</h3>
+            <span class="movie-card-submaker">By FOBS Team • (2023)</span>
+            <span class="card-download-btn">Click for Details</span>
+          </div>
+        </article>
+      </a>
+      <!-- Spectral -->
+      <a href="movie/United%20States/Hollywood/movie_79605.html" class="movie-card-anchor" data-category="hollywood" data-type="movie">
+        <article class="movie-card" data-title="Spectral" data-year="2016" data-country="United States" data-category="Hollywood" data-genre="Science Fiction, Thriller, Action">
+          <div class="poster-box">
+            <div class="card-top-badges">
+              <span class="badge-tag-year badge-tag-free">Free</span>
+              <span class="badge-tag-bangla">বাংলা সাব</span>
+            </div>
+            <img src="https://image.tmdb.org/t/p/w600_and_h900_bestv2/5yprxs7ZyBr58RsTQJrKCVmqk8X.jpg" alt="Spectral Poster" width="220" height="330" loading="lazy" />
+          </div>
+          <div class="movie-card-body">
+            <div class="card-tags-row">
+              <span class="tag-industry">Hollywood</span>
+              <span class="tag-country">United States</span>
+            </div>
+            <h3 class="movie-card-title">Spectral</h3>
+            <span class="movie-card-submaker">By FOBS Team • (2016)</span>
+            <span class="card-download-btn">Click for Details</span>
+          </div>
+        </article>
+      </a>
+      <!-- The Eternal Zero -->
+      <a href="movie/Japan/Japanese%20Cinema/movie_88238.html" class="movie-card-anchor" data-category="world-cinema" data-type="movie">
+        <article class="movie-card" data-title="The Eternal Zero" data-year="2013" data-country="Japan" data-category="World Cinema" data-genre="War, Drama, Action, Mystery">
+          <div class="poster-box">
+            <div class="card-top-badges">
+              <span class="badge-tag-year badge-tag-free">Free</span>
+              <span class="badge-tag-bangla">বাংলা সাব</span>
+            </div>
+            <img src="https://image.tmdb.org/t/p/w500/jw4aoqckCNARJqtWyvRlH7cQkWE.jpg" alt="The Eternal Zero Poster" width="220" height="330" loading="lazy" />
+          </div>
+          <div class="movie-card-body">
+            <div class="card-tags-row">
+              <span class="tag-industry">World Cinema</span>
+              <span class="tag-country">Japan</span>
+            </div>
+            <h3 class="movie-card-title">The Eternal Zero</h3>
+            <span class="movie-card-submaker">By FOBS Team • (2013)</span>
+            <span class="card-download-btn">Click for Details</span>
+          </div>
+        </article>
+      </a>
+      <!-- The Holdovers -->
+      <a href="movie/United%20States/Hollywood/movie_124974.html" class="movie-card-anchor" data-category="hollywood" data-type="movie">
+        <article class="movie-card" data-title="The Holdovers" data-year="2023" data-country="United States" data-category="Hollywood" data-genre="Drama, Comedy">
+          <div class="poster-box">
+            <div class="card-top-badges">
+              <span class="badge-tag-year badge-tag-free">Free</span>
+              <span class="badge-tag-bangla">বাংলা সাব</span>
+            </div>
+            <img src="https://image.tmdb.org/t/p/w600_and_h900_bestv2/VHSzNBTwxV8vh7wylo7O9CLdac.jpg" alt="The Holdovers Poster" width="220" height="330" loading="lazy" />
+          </div>
+          <div class="movie-card-body">
+            <div class="card-tags-row">
+              <span class="tag-industry">Hollywood</span>
+              <span class="tag-country">United States</span>
+            </div>
+            <h3 class="movie-card-title">The Holdovers</h3>
+            <span class="movie-card-submaker">By FOBS Team • (2023)</span>
+            <span class="card-download-btn">Click for Details</span>
+          </div>
+        </article>
+      </a>
+      <!-- The Prosecutor -->
+      <a href="movie/HK/World%20Cinema/movie_143726.html" class="movie-card-anchor" data-category="world-cinema" data-type="movie">
+        <article class="movie-card" data-title="The Prosecutor" data-year="2024" data-country="HK" data-category="World Cinema" data-genre="Action, Drama, Crime, Thriller">
+          <div class="poster-box">
+            <div class="card-top-badges">
+              <span class="badge-tag-year badge-tag-free">Free</span>
+              <span class="badge-tag-bangla">বাংলা সাব</span>
+            </div>
+            <img src="https://image.tmdb.org/t/p/w600_and_h900_bestv2/n3ZnFqp988MWfIkT8OHofEJfjlt.jpg" alt="The Prosecutor Poster" width="220" height="330" loading="lazy" />
+          </div>
+          <div class="movie-card-body">
+            <div class="card-tags-row">
+              <span class="tag-industry">World Cinema</span>
+              <span class="tag-country">HK</span>
+            </div>
+            <h3 class="movie-card-title">The Prosecutor</h3>
+            <span class="movie-card-submaker">By FOBS Team • (2024)</span>
+            <span class="card-download-btn">Click for Details</span>
+          </div>
+        </article>
+      </a>
+      <!-- The Rookies -->
+      <a href="movie/China/Chinese%20Cinema/movie_94392.html" class="movie-card-anchor" data-category="chinese-cinema" data-type="movie">
+        <article class="movie-card" data-title="The Rookies" data-year="2019" data-country="China" data-category="Chinese Cinema" data-genre="Drama">
+          <div class="poster-box">
+            <div class="card-top-badges">
+              <span class="badge-tag-year badge-tag-free">Free</span>
+              <span class="badge-tag-bangla">বাংলা সাব</span>
+            </div>
+            <img src="images/covers/doctor_x_cover.jpg" alt="The Rookies Poster" width="220" height="330" loading="lazy" />
+          </div>
+          <div class="movie-card-body">
+            <div class="card-tags-row">
+              <span class="tag-industry">Chinese Cinema</span>
+              <span class="tag-country">China</span>
+            </div>
+            <h3 class="movie-card-title">The Rookies</h3>
+            <span class="movie-card-submaker">By FOBS Team • (2019)</span>
+            <span class="card-download-btn">Click for Details</span>
+          </div>
+        </article>
+      </a>
+      <!-- Weapon -->
+      <a href="movie/India/Indian%20Cinema/movie_137682.html" class="movie-card-anchor" data-category="world-cinema" data-type="movie">
+        <article class="movie-card" data-title="Weapon" data-year="2024" data-country="India" data-category="World Cinema" data-genre="Drama">
+          <div class="poster-box">
+            <div class="card-top-badges">
+              <span class="badge-tag-year badge-tag-free">Free</span>
+              <span class="badge-tag-bangla">বাংলা সাব</span>
+            </div>
+            <img src="images/covers/doctor_x_cover.jpg" alt="Weapon Poster" width="220" height="330" loading="lazy" />
+          </div>
+          <div class="movie-card-body">
+            <div class="card-tags-row">
+              <span class="tag-industry">World Cinema</span>
+              <span class="tag-country">India</span>
+            </div>
+            <h3 class="movie-card-title">Weapon</h3>
+            <span class="movie-card-submaker">By FOBS Team • (2024)</span>
+            <span class="card-download-btn">Click for Details</span>
+          </div>
+        </article>
+      </a>
+      <!-- Wish -->
+      <a href="movie/United%20States/Hollywood/movie_125988.html" class="movie-card-anchor" data-category="hollywood" data-type="movie">
+        <article class="movie-card" data-title="Wish" data-year="2023" data-country="United States" data-category="Hollywood" data-genre="Drama">
+          <div class="poster-box">
+            <div class="card-top-badges">
+              <span class="badge-tag-year badge-tag-free">Free</span>
+              <span class="badge-tag-bangla">বাংলা সাব</span>
+            </div>
+            <img src="images/covers/doctor_x_cover.jpg" alt="Wish Poster" width="220" height="330" loading="lazy" />
+          </div>
+          <div class="movie-card-body">
+            <div class="card-tags-row">
+              <span class="tag-industry">Hollywood</span>
+              <span class="tag-country">United States</span>
+            </div>
+            <h3 class="movie-card-title">Wish</h3>
+            <span class="movie-card-submaker">By FOBS Team • (2023)</span>
+            <span class="card-download-btn">Click for Details</span>
+          </div>
+        </article>
+      </a>
+      <!-- Wonderstruck -->
+      <a href="movie/United%20States/Hollywood/movie_106382.html" class="movie-card-anchor" data-category="hollywood" data-type="movie">
+        <article class="movie-card" data-title="Wonderstruck" data-year="2017" data-country="United States" data-category="Hollywood" data-genre="Drama">
+          <div class="poster-box">
+            <div class="card-top-badges">
+              <span class="badge-tag-year badge-tag-free">Free</span>
+              <span class="badge-tag-bangla">বাংলা সাব</span>
+            </div>
+            <img src="https://image.tmdb.org/t/p/w600_and_h900_bestv2/7hPnW1yWlIJcKCEQ5Kbr5dMtrDp.jpg" alt="Wonderstruck Poster" width="220" height="330" loading="lazy" />
+          </div>
+          <div class="movie-card-body">
+            <div class="card-tags-row">
+              <span class="tag-industry">Hollywood</span>
+              <span class="tag-country">United States</span>
+            </div>
+            <h3 class="movie-card-title">Wonderstruck</h3>
+            <span class="movie-card-submaker">By FOBS Team • (2017)</span>
+            <span class="card-download-btn">Click for Details</span>
+          </div>
+        </article>
+      </a>
+    </div>
+  </section>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div class="footer-col footer-col-main">
+          <div class="footer-logo">
+            <div class="logo-icon-sm">
+              <img src="images/logo.png" alt="FOBS Team" width="22" height="22" />
+            </div>
+            <span class="site-title">FOBS Team</span>
+          </div>
+          <p class="footer-desc">
+            We work to pay the translators the wages they deserve. Dedicated to delivering high-quality, accurately synced Bangla subtitles while ensuring our talented creators receive fair value for their hard work.
+          </p>
+          <div class="footer-social-links">
+            <a href="https://t.me/FOBS_Team" target="_blank" rel="noopener noreferrer" class="footer-social-icon telegram" aria-label="Telegram" title="Telegram Channel">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+            </a>
+            <a href="https://whatsapp.com/channel/0029Vaexample" target="_blank" rel="noopener noreferrer" class="footer-social-icon whatsapp" aria-label="WhatsApp" title="WhatsApp Channel">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.196 8.196 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24m-3.53 4.16c-.19 0-.41.07-.63.31-.22.25-.85.83-.85 2.02 0 1.19.87 2.34.99 2.5.12.16 1.7 2.6 4.12 3.65.58.25 1.03.4 1.38.51.58.18 1.11.16 1.53.1.47-.07 1.44-.59 1.64-1.16.2-.57.2-1.06.14-1.16-.06-.1-.22-.16-.47-.29s-1.47-.73-1.7-.81c-.23-.08-.4-.12-.57.12-.17.25-.66.82-.81.99-.15.16-.3.18-.55.06s-1.06-.39-2.02-1.25c-.75-.67-1.26-1.5-1.41-1.75s-.02-.38.11-.5c.11-.11.25-.29.38-.44.12-.14.16-.25.25-.41.08-.16.04-.31-.02-.44s-.57-1.37-.78-1.88c-.2-.49-.4-.42-.56-.43h-.47z"/></svg>
+            </a>
+            <a href="https://facebook.com/FOBS_Team" target="_blank" rel="noopener noreferrer" class="footer-social-icon facebook" aria-label="Facebook" title="Facebook Page">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            </a>
+            <a href="https://youtube.com/@FOBS_Team" target="_blank" rel="noopener noreferrer" class="footer-social-icon youtube" aria-label="YouTube" title="YouTube Channel">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="footer-heading">Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="series.html">TV &amp; Web Series</a></li>
+            <li><a href="movies.html">Movies</a></li>
+            <li><a href="paid.html">Paid Series</a></li>
+            <li><a href="free.html">Free Collection</a></li>
+            <li><a href="request.html">Request Subtitle</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="footer-heading">Categories</h4>
+          <ul class="footer-links">
+            <li><a href="series.html">K-Drama Subtitles</a></li>
+            <li><a href="series.html">C-Drama Subtitles</a></li>
+            <li><a href="movies.html">Hollywood Cinema</a></li>
+            <li><a href="series.html">Turkish Series</a></li>
+            <li><a href="movies.html">Asian Cinema</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="footer-heading">Community &amp; Legal</h4>
+          <ul class="footer-links">
+            <li><a href="about.html">About FOBS Team</a></li>
+            <li><a href="community.html">Join Community</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+            <li><a href="terms.html">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 FOBS Team (Funds Of Bangla Subtitle). All subtitles crafted with passion by volunteer community members.</p>
+        <p class="footer-sub-note">All external media posters and trademarks belong to their respective copyright holders.</p>
+      </div>
+    </div>
+  </footer>
+
+  <button class="back-to-top-btn" id="backToTopBtn" aria-label="Back to top">↑</button>
+
+  <script src="js/search-data.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

@@ -12,6 +12,11 @@ document.addEventListener('DOMContentLoaded', () => {
   initDetailsPageHero();
   initLatestReleasesQueue();
   initEpisodeDropdowns();
+  initLiveSearch();
+  initCatalogFilterPills();
+  initInstantSearchAndModal();
+  initSectionSortButtons();
+  initReportBrokenLink();
 });
 
 /* ==========================================================================
@@ -629,6 +634,870 @@ function initEpisodeDropdowns() {
     }
   });
 }
+
+/* ==========================================================================
+   Live Search Filter for all Movies and Series
+   ========================================================================== */
+function initLiveSearch() {
+  const input = document.getElementById('liveSearchInput');
+  const searchBtn = document.getElementById('searchSubmitBtn');
+  const form = document.getElementById('headerSearchForm');
+  if (!input) return;
+
+  const allCards = Array.from(document.querySelectorAll('.library-section .movie-card-anchor'));
+
+  function filterCards(autoScroll = false) {
+    const query = input.value.trim().toLowerCase();
+    const viewAllContainers = document.querySelectorAll('.view-all-container');
+    let visibleCount = 0;
+
+    if (query) {
+      // Hide view all buttons during search so all matching cards show directly
+      viewAllContainers.forEach((el) => (el.style.display = 'none'));
+
+      allCards.forEach((anchor) => {
+        const card = anchor.querySelector('.movie-card');
+        if (!card) return;
+        const title = (card.getAttribute('data-title') || '').toLowerCase();
+        const country = (card.getAttribute('data-country') || '').toLowerCase();
+        const category = (card.getAttribute('data-category') || '').toLowerCase();
+        const genre = (card.getAttribute('data-genre') || '').toLowerCase();
+        const year = (card.getAttribute('data-year') || '').toLowerCase();
+
+        const matches = title.includes(query) || country.includes(query) || category.includes(query) || genre.includes(query) || year.includes(query);
+        anchor.style.setProperty('display', matches ? 'block' : 'none', 'important');
+        if (matches) visibleCount++;
+      });
+    } else {
+      // Restore normal view-all containers and reset inline display styles
+      viewAllContainers.forEach((el) => (el.style.display = ''));
+      allCards.forEach((anchor) => {
+        anchor.style.removeProperty('display');
+      });
+    }
+
+    if (autoScroll && query) {
+      const targetSec = document.getElementById('series') || document.getElementById('latest');
+      if (targetSec) {
+        targetSec.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  }
+
+  // Check URL query parameters for search term
+  try {
+    const urlParams = new URLSearchParams(window.location.search);
+    const initialQuery = urlParams.get('search') || urlParams.get('q');
+    if (initialQuery) {
+      input.value = initialQuery;
+      filterCards(true);
+    }
+  } catch (err) {}
+
+  input.addEventListener('input', () => filterCards(false));
+
+  if (searchBtn) {
+    searchBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      filterCards(true);
+    });
+  }
+
+  if (form) {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      filterCards(true);
+    });
+  }
+}
+
+/* ==========================================================================
+   Catalog Page Filter Pills (series.html, movies.html, paid.html, free.html)
+   ========================================================================== */
+function initCatalogFilterPills() {
+  const pills = document.querySelectorAll('.catalog-pill, .cat-pill');
+  if (!pills.length) return;
+
+  pills.forEach((pill) => {
+    pill.addEventListener('click', () => {
+      const container = pill.closest('.catalog-filter-pills') || pill.parentElement;
+      const section = pill.closest('.library-section') || document;
+      const sectionPills = container.querySelectorAll('.catalog-pill, .cat-pill');
+      sectionPills.forEach((p) => p.classList.remove('active'));
+      pill.classList.add('active');
+
+      const filter = pill.getAttribute('data-filter') || 'all';
+      const allCards = Array.from(section.querySelectorAll('.movie-card-anchor'));
+      const countBadge = section.querySelector('.section-head-left .pill-badge');
+      let visibleCount = 0;
+
+      allCards.forEach((anchor) => {
+        const card = anchor.querySelector('.movie-card');
+        const cardCat = (anchor.getAttribute('data-category') || card?.getAttribute('data-category') || '').toLowerCase();
+        const cardType = (anchor.getAttribute('data-type') || '').toLowerCase();
+        const country = (card?.getAttribute('data-country') || '').toLowerCase();
+
+        let matches = false;
+        if (filter === 'all') {
+          matches = true;
+        } else if (filter === 'series') {
+          matches = cardType === 'series';
+        } else if (filter === 'movie') {
+          matches = cardType === 'movie';
+        } else if (filter === 'k-drama') {
+          matches = cardCat === 'k-drama' || country.includes('korea');
+        } else if (filter === 'c-drama') {
+          matches = cardCat === 'c-drama' || country.includes('china');
+        } else if (filter === 'turkish-drama') {
+          matches = cardCat === 'turkish-drama' || country.includes('turkey');
+        } else if (filter === 'hollywood') {
+          matches = cardCat === 'hollywood' || country.includes('united states') || country.includes('united kingdom');
+        } else if (filter === 'k-movie') {
+          matches = cardCat === 'k-movie' || (cardType === 'movie' && country.includes('korea'));
+        } else if (filter === 'chinese-cinema') {
+          matches = cardCat === 'chinese-cinema' || (cardType === 'movie' && (country.includes('china') || country.includes('hong kong')));
+        } else if (filter === 'world-cinema') {
+          matches = cardCat === 'world-cinema';
+        } else if (filter === 'others') {
+          matches = !['k-drama', 'c-drama', 'hollywood', 'turkish-drama'].includes(cardCat);
+        } else {
+          matches = cardCat.includes(filter) || country.includes(filter);
+        }
+
+        anchor.style.display = matches ? 'block' : 'none';
+        if (matches) visibleCount++;
+      });
+
+      if (countBadge) {
+        countBadge.textContent = `Total ${visibleCount}`;
+      }
+    });
+  });
+}
+
+/* ==========================================================================
+   Instant Live Autocomplete & Mobile Search Modal (88 Titles)
+   ========================================================================== */
+function initInstantSearchAndModal() {
+  function getRootPrefix() {
+    const cssLink = document.querySelector('link[href*="style.css"]');
+    if (cssLink) {
+      const href = cssLink.getAttribute('href');
+      return href.replace('css/style.css', '').replace('style.css', '');
+    }
+    return '';
+  }
+
+  // Ensure search-data.js is loaded
+  if (!window.FOBS_CATALOG) {
+    const prefix = getRootPrefix();
+    const s = document.createElement('script');
+    s.src = `${prefix}js/search-data.js`;
+    document.head.appendChild(s);
+  }
+
+  function escapeHtml(str) {
+    if (!str) return '';
+    return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  }
+
+  function escapeRegex(str) {
+    return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  }
+
+  // 1. Ensure Mobile Search Button exists in header
+  const mobileToggle = document.getElementById('mobileMenuToggle');
+  if (mobileToggle && !document.getElementById('mobileSearchOpenBtn')) {
+    const mobileSearchBtn = document.createElement('button');
+    mobileSearchBtn.type = 'button';
+    mobileSearchBtn.className = 'mobile-search-btn';
+    mobileSearchBtn.id = 'mobileSearchOpenBtn';
+    mobileSearchBtn.setAttribute('aria-label', 'Open Search');
+    mobileSearchBtn.innerHTML = `
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="11" cy="11" r="8"></circle>
+        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+      </svg>
+      <span class="mobile-search-btn-text">Search</span>
+    `;
+
+    if (mobileToggle.parentElement) {
+      if (!mobileToggle.parentElement.classList.contains('mobile-header-actions')) {
+        const wrapper = document.createElement('div');
+        wrapper.className = 'mobile-header-actions';
+        mobileToggle.parentNode.insertBefore(wrapper, mobileToggle);
+        wrapper.appendChild(mobileSearchBtn);
+        wrapper.appendChild(mobileToggle);
+      } else {
+        mobileToggle.parentElement.insertBefore(mobileSearchBtn, mobileToggle);
+      }
+    }
+  }
+
+  // 2. Ensure Desktop Search Dropdown exists
+  const headerSearchBox = document.querySelector('.header-search-box');
+  let desktopDropdown = document.getElementById('desktopSearchDropdown');
+  if (headerSearchBox && !desktopDropdown) {
+    desktopDropdown = document.createElement('div');
+    desktopDropdown.className = 'desktop-search-dropdown';
+    desktopDropdown.id = 'desktopSearchDropdown';
+    headerSearchBox.appendChild(desktopDropdown);
+  }
+
+  // 3. Ensure Search Modal exists
+  let modalBackdrop = document.getElementById('searchModal');
+  if (!modalBackdrop) {
+    modalBackdrop = document.createElement('div');
+    modalBackdrop.className = 'search-modal-backdrop';
+    modalBackdrop.id = 'searchModal';
+    modalBackdrop.setAttribute('aria-hidden', 'true');
+    modalBackdrop.innerHTML = `
+      <div class="search-modal-dialog">
+        <div class="search-modal-header">
+          <div class="search-modal-input-wrap">
+            <svg class="search-modal-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <input type="text" id="modalSearchInput" class="search-modal-input" placeholder="Search movies, series, K-Drama..." autocomplete="off" />
+            <button type="button" class="search-modal-clear-btn" id="modalSearchClearBtn" aria-label="Clear Search" style="display: none;">✕</button>
+          </div>
+          <button type="button" class="search-modal-close-btn" id="modalSearchCloseBtn" aria-label="Close Search">✕</button>
+        </div>
+        <div class="search-suggestions-container" id="searchSuggestionsContainer">
+          <div class="search-suggestions-header">
+            <span class="suggestions-count" id="suggestionsCount">88 Available Titles</span>
+            <span class="suggestions-hint">Instant suggestions from 1 word</span>
+          </div>
+          <div class="search-suggestions-list" id="modalSuggestionsList"></div>
+        </div>
+      </div>
+    `;
+    document.body.appendChild(modalBackdrop);
+  }
+
+  // 4. Suggestion Rendering Logic
+  function renderSuggestions(query, targetListEl, isDesktop = false) {
+    if (!targetListEl) return;
+    const cleanQ = query.trim().toLowerCase();
+
+    if (!cleanQ) {
+      targetListEl.innerHTML = '';
+      if (isDesktop && desktopDropdown) {
+        desktopDropdown.classList.remove('open');
+      }
+      return;
+    }
+
+    const catalog = window.FOBS_CATALOG || [];
+    const rootPrefix = getRootPrefix();
+
+    const matches = catalog.filter((item) => {
+      const title = (item.title || '').toLowerCase();
+      const country = (item.country || '').toLowerCase();
+      const category = (item.category || '').toLowerCase();
+      const year = (item.year || '').toLowerCase();
+      return title.includes(cleanQ) || country.includes(cleanQ) || category.includes(cleanQ) || year.includes(cleanQ);
+    });
+
+    matches.sort((a, b) => {
+      const aTitle = (a.title || '').toLowerCase();
+      const bTitle = (b.title || '').toLowerCase();
+      const aStarts = aTitle.startsWith(cleanQ);
+      const bStarts = bTitle.startsWith(cleanQ);
+      if (aStarts && !bStarts) return -1;
+      if (!aStarts && bStarts) return 1;
+      return 0;
+    });
+
+    const topResults = matches.slice(0, 8);
+
+    if (topResults.length === 0) {
+      targetListEl.innerHTML = `
+        <div class="suggestion-empty">
+          <p>No subtitles found matching "<strong>${escapeHtml(query)}</strong>"</p>
+          <p style="margin-top: 8px;"><a href="${rootPrefix}request.html">Request this Subtitle →</a></p>
+        </div>
+      `;
+      if (isDesktop && desktopDropdown) desktopDropdown.classList.add('open');
+      return;
+    }
+
+    const html = topResults.map((item) => {
+      const regex = new RegExp(`(${escapeRegex(cleanQ)})`, 'gi');
+      const highlightedTitle = escapeHtml(item.title).replace(regex, '<mark class="search-highlight">$1</mark>');
+      const badgeClass = (item.type || '').toLowerCase() === 'series' ? 'series' : 'movie';
+      const itemUrl = `${rootPrefix}${item.url}`;
+
+      return `
+        <a href="${itemUrl}" class="suggestion-card">
+          <img src="${item.poster}" alt="${escapeHtml(item.title)}" class="suggestion-thumb" loading="lazy" />
+          <div class="suggestion-info">
+            <span class="suggestion-title">${highlightedTitle}</span>
+            <div class="suggestion-meta">
+              <span class="suggestion-badge ${badgeClass}">${item.type}</span>
+              <span class="suggestion-badge category">${escapeHtml(item.category)}</span>
+              <span class="suggestion-year">${item.year}</span>
+            </div>
+          </div>
+          <span class="suggestion-chevron">→</span>
+        </a>
+      `;
+    }).join('');
+
+    targetListEl.innerHTML = html;
+    if (isDesktop && desktopDropdown) {
+      desktopDropdown.classList.add('open');
+    }
+  }
+
+  // 5. Desktop Input Listener
+  const liveSearchInput = document.getElementById('liveSearchInput');
+  if (liveSearchInput && desktopDropdown) {
+    liveSearchInput.addEventListener('input', () => {
+      renderSuggestions(liveSearchInput.value, desktopDropdown, true);
+    });
+
+    liveSearchInput.addEventListener('focus', () => {
+      if (liveSearchInput.value.trim().length >= 1) {
+        renderSuggestions(liveSearchInput.value, desktopDropdown, true);
+      }
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('.header-search-box')) {
+        desktopDropdown.classList.remove('open');
+      }
+    });
+  }
+
+  // 6. Mobile Modal Open / Close / Input Listeners
+  const mobileSearchOpenBtn = document.getElementById('mobileSearchOpenBtn');
+  const modalCloseBtn = document.getElementById('modalSearchCloseBtn');
+  const modalInput = document.getElementById('modalSearchInput');
+  const modalClearBtn = document.getElementById('modalSearchClearBtn');
+  const modalSuggestionsList = document.getElementById('modalSuggestionsList');
+
+  function openModal() {
+    modalBackdrop.classList.add('open');
+    modalBackdrop.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    setTimeout(() => {
+      if (modalInput) modalInput.focus();
+    }, 100);
+  }
+
+  function closeModal() {
+    modalBackdrop.classList.remove('open');
+    modalBackdrop.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  if (mobileSearchOpenBtn) {
+    mobileSearchOpenBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      openModal();
+    });
+  }
+
+  if (modalCloseBtn) {
+    modalCloseBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      closeModal();
+    });
+  }
+
+  modalBackdrop.addEventListener('click', (e) => {
+    if (e.target === modalBackdrop) {
+      closeModal();
+    }
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      closeModal();
+      if (desktopDropdown) desktopDropdown.classList.remove('open');
+    }
+  });
+
+  if (modalInput) {
+    modalInput.addEventListener('input', () => {
+      const val = modalInput.value;
+      if (modalClearBtn) {
+        modalClearBtn.style.display = val.length > 0 ? 'flex' : 'none';
+      }
+      renderSuggestions(val, modalSuggestionsList, false);
+    });
+  }
+
+  if (modalClearBtn && modalInput) {
+    modalClearBtn.addEventListener('click', () => {
+      modalInput.value = '';
+      modalClearBtn.style.display = 'none';
+      modalInput.focus();
+      renderSuggestions('', modalSuggestionsList, false);
+    });
+  }
+}
+
+/* ==========================================================================
+   Section Head Sort (Name A-Z, Name Z-A, Date Latest, Date Oldest) & Reset
+   ========================================================================== */
+function initSectionSortButtons() {
+  function sortCardsInGrid(grid, sortType) {
+    if (!grid) return;
+    const cards = Array.from(grid.children);
+    cards.sort((a, b) => {
+      const artA = a.querySelector('.movie-card') || a;
+      const artB = b.querySelector('.movie-card') || b;
+      const titleA = (artA.getAttribute('data-title') || artA.querySelector('.movie-card-title')?.textContent || '').trim();
+      const titleB = (artB.getAttribute('data-title') || artB.querySelector('.movie-card-title')?.textContent || '').trim();
+      const yearA = parseInt(artA.getAttribute('data-year') || '2000', 10);
+      const yearB = parseInt(artB.getAttribute('data-year') || '2000', 10);
+
+      if (sortType === 'name-asc') {
+        return titleA.localeCompare(titleB, undefined, { sensitivity: 'base' });
+      } else if (sortType === 'name-desc') {
+        return titleB.localeCompare(titleA, undefined, { sensitivity: 'base' });
+      } else if (sortType === 'date-desc') {
+        if (yearB !== yearA) return yearB - yearA;
+        return titleA.localeCompare(titleB, undefined, { sensitivity: 'base' });
+      } else if (sortType === 'date-asc') {
+        if (yearA !== yearB) return yearA - yearB;
+        return titleA.localeCompare(titleB, undefined, { sensitivity: 'base' });
+      }
+      return 0;
+    });
+
+    cards.forEach((card) => grid.appendChild(card));
+  }
+
+  const sortLabelMap = {
+    'name-asc': 'Sort: A to Z',
+    'name-desc': 'Sort: Z to A',
+    'date-desc': 'Sort: Latest',
+    'date-asc': 'Sort: Oldest',
+  };
+
+  // 1. Initial setup on page load: sort cards A-Z, save original badge counts, and respect data-limit (10 on homepage)
+  document.querySelectorAll('.library-section').forEach((section) => {
+    // Preserve chronological upload order for Latest Releases section
+    if (section.id === 'latest') return;
+
+    const grid = section.querySelector('.movie-grid');
+    const sortBtn = section.querySelector('.btn-head-sort');
+    const indBtn = section.querySelector('.btn-head-industry, .btn-head-category');
+    const countBadge = section.querySelector('.section-head-left .pill-badge');
+    const limit = parseInt(section.getAttribute('data-limit'), 10);
+
+    if (countBadge && !countBadge.getAttribute('data-orig')) {
+      countBadge.setAttribute('data-orig', countBadge.textContent.trim());
+    }
+    if (indBtn && !indBtn.getAttribute('data-selected')) {
+      indBtn.setAttribute('data-selected', 'all');
+    }
+    if (sortBtn && !sortBtn.getAttribute('data-selected')) {
+      sortBtn.setAttribute('data-selected', 'name-asc');
+    }
+    if (grid) {
+      sortCardsInGrid(grid, 'name-asc');
+      if (limit && !isNaN(limit)) {
+        const all = Array.from(grid.querySelectorAll('.movie-card-anchor'));
+        all.forEach((c, idx) => {
+          c.style.display = idx < limit ? 'block' : 'none';
+        });
+      }
+      const sortText = sortBtn ? sortBtn.querySelector('.sort-text') : null;
+      if (sortText) sortText.textContent = sortLabelMap['name-asc'];
+    }
+  });
+
+  // 2. Toggle Industry dropdown menu on button click
+  document.querySelectorAll('.btn-head-industry, .btn-head-category').forEach((btn) => {
+    btn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      const wrapper = this.closest('.filter-dropdown-wrapper');
+      if (!wrapper) return;
+      const menu = wrapper.querySelector('.industry-dropdown-menu, .category-dropdown-menu');
+      if (!menu) return;
+
+      const isOpen = menu.classList.contains('show');
+
+      // Close all other open dropdowns first
+      document.querySelectorAll('.industry-dropdown-menu.show, .category-dropdown-menu.show, .sort-dropdown-menu.show').forEach((m) => {
+        if (m !== menu) m.classList.remove('show');
+      });
+      document.querySelectorAll('.btn-head-industry.active, .btn-head-category.active, .btn-head-sort.active').forEach((b) => {
+        if (b !== this) b.classList.remove('active');
+      });
+
+      menu.classList.toggle('show', !isOpen);
+      this.classList.toggle('active', !isOpen);
+      this.setAttribute('aria-expanded', !isOpen ? 'true' : 'false');
+    });
+  });
+
+  // 3. Option selection in Industry dropdown (PENDING: does NOT filter until Apply Filters is clicked)
+  document.querySelectorAll('.industry-option, .category-option').forEach((opt) => {
+    opt.addEventListener('click', function (e) {
+      e.stopPropagation();
+      const filter = this.getAttribute('data-filter') || 'all';
+      const wrapper = this.closest('.filter-dropdown-wrapper');
+      const indBtn = wrapper ? wrapper.querySelector('.btn-head-industry, .btn-head-category') : null;
+      const menu = wrapper ? wrapper.querySelector('.industry-dropdown-menu, .category-dropdown-menu') : null;
+
+      // Update active option in menu
+      if (menu) {
+        menu.querySelectorAll('.industry-option, .category-option').forEach((o) => o.classList.remove('active'));
+        this.classList.add('active');
+        menu.classList.remove('show');
+      }
+
+      // Update button text and store selected value
+      if (indBtn) {
+        indBtn.classList.remove('active');
+        indBtn.setAttribute('aria-expanded', 'false');
+        indBtn.setAttribute('data-selected', filter);
+
+        const labelSpan = indBtn.querySelector('.industry-text, .category-text');
+        const rawText = this.textContent.trim().replace(/^[^\w\s]+/, '').trim();
+        const cleanName = rawText.split('(')[0].trim();
+
+        if (labelSpan) {
+          if (filter === 'all') {
+            labelSpan.textContent = indBtn.classList.contains('btn-head-industry') ? 'Industry: All' : 'Filter: All';
+          } else {
+            const prefix = indBtn.classList.contains('btn-head-industry') ? 'Industry:' : 'Filter:';
+            labelSpan.textContent = `${prefix} ${cleanName}`;
+          }
+        }
+      }
+    });
+  });
+
+  // 4. Toggle Sort dropdown menu on button click
+  document.querySelectorAll('.btn-head-sort').forEach((btn) => {
+    btn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      const wrapper = this.closest('.sort-dropdown-wrapper');
+      if (!wrapper) return;
+      const menu = wrapper.querySelector('.sort-dropdown-menu');
+      if (!menu) return;
+
+      const isOpen = menu.classList.contains('show');
+
+      // Close all other open dropdowns first
+      document.querySelectorAll('.industry-dropdown-menu.show, .category-dropdown-menu.show, .sort-dropdown-menu.show').forEach((m) => {
+        if (m !== menu) m.classList.remove('show');
+      });
+      document.querySelectorAll('.btn-head-industry.active, .btn-head-category.active, .btn-head-sort.active').forEach((b) => {
+        if (b !== this) b.classList.remove('active');
+      });
+
+      menu.classList.toggle('show', !isOpen);
+      this.classList.toggle('active', !isOpen);
+      this.setAttribute('aria-expanded', !isOpen ? 'true' : 'false');
+    });
+  });
+
+  // 5. Option selection in Sort dropdown (PENDING: stores selection until Apply Filters is clicked)
+  document.querySelectorAll('.sort-option').forEach((opt) => {
+    opt.addEventListener('click', function (e) {
+      e.stopPropagation();
+      const sortType = this.getAttribute('data-sort') || 'name-asc';
+      const wrapper = this.closest('.sort-dropdown-wrapper');
+      const sortBtn = wrapper ? wrapper.querySelector('.btn-head-sort') : null;
+      const menu = wrapper ? wrapper.querySelector('.sort-dropdown-menu') : null;
+
+      // Update active option in menu
+      if (menu) {
+        menu.querySelectorAll('.sort-option').forEach((o) => o.classList.remove('active'));
+        this.classList.add('active');
+        menu.classList.remove('show');
+      }
+
+      if (sortBtn) {
+        sortBtn.classList.remove('active');
+        sortBtn.setAttribute('aria-expanded', 'false');
+        sortBtn.setAttribute('data-selected', sortType);
+
+        const sortText = sortBtn.querySelector('.sort-text');
+        if (sortText && sortLabelMap[sortType]) {
+          sortText.textContent = sortLabelMap[sortType];
+        }
+      }
+    });
+  });
+
+  // 6. APPLY FILTERS BUTTON: Filters across full catalog & caps visible to limit (10 on homepage)
+  document.querySelectorAll('.btn-head-apply').forEach((btn) => {
+    btn.addEventListener('click', function (e) {
+      if (e) e.preventDefault();
+      const section = this.closest('.library-section');
+      if (!section) return;
+      const grid = section.querySelector('.movie-grid');
+      const indBtn = section.querySelector('.btn-head-industry, .btn-head-category');
+      const sortBtn = section.querySelector('.btn-head-sort');
+      const limit = parseInt(section.getAttribute('data-limit'), 10);
+
+      const filter = (indBtn ? indBtn.getAttribute('data-selected') : 'all') || 'all';
+      const sortType = (sortBtn ? sortBtn.getAttribute('data-selected') : 'name-asc') || 'name-asc';
+
+      // 1. Filter all cards in section
+      const allCards = Array.from(section.querySelectorAll('.movie-card-anchor'));
+      const countBadge = section.querySelector('.section-head-left .pill-badge');
+      if (countBadge && !countBadge.getAttribute('data-orig')) {
+        countBadge.setAttribute('data-orig', countBadge.textContent.trim());
+      }
+
+      let matchingCards = [];
+
+      allCards.forEach((anchor) => {
+        const card = anchor.querySelector('.movie-card');
+        const cardCat = (anchor.getAttribute('data-category') || card?.getAttribute('data-category') || '').toLowerCase();
+        const cardType = (anchor.getAttribute('data-type') || '').toLowerCase();
+        const country = (card?.getAttribute('data-country') || '').toLowerCase();
+
+        let matches = false;
+        if (filter === 'all') {
+          matches = true;
+        } else if (filter === 'series') {
+          matches = cardType === 'series';
+        } else if (filter === 'movie') {
+          matches = cardType === 'movie';
+        } else if (filter === 'k-drama') {
+          matches = cardCat.includes('k-drama') || cardCat.includes('k-movie') || country.includes('korea');
+        } else if (filter === 'c-drama') {
+          matches = cardCat.includes('c-drama') || cardCat.includes('chinese') || country.includes('china') || country.includes('hk') || country.includes('hong kong');
+        } else if (filter === 'j-drama') {
+          matches = cardCat.includes('j-drama') || cardCat.includes('j-movie') || country.includes('japan');
+        } else if (filter === 'turkish-drama') {
+          matches = cardCat.includes('turkish') || country.includes('turkey');
+        } else if (filter === 'hollywood') {
+          matches = cardCat.includes('hollywood') || country.includes('united states') || country.includes('united kingdom') || country.includes('ca') || country.includes('canada');
+        } else if (filter === 'k-movie') {
+          matches = cardCat.includes('k-movie') || (cardType === 'movie' && country.includes('korea'));
+        } else if (filter === 'chinese-cinema') {
+          matches = cardCat.includes('chinese-cinema') || (country.includes('china') || country.includes('hong kong') || country.includes('hk'));
+        } else if (filter === 'world-cinema') {
+          matches = cardCat.includes('world-cinema') || ['france', 'germany', 'india', 'it', 'italy'].some((c) => country.includes(c));
+        } else if (filter === 'others') {
+          matches = !['k-drama', 'c-drama', 'hollywood', 'turkish-drama', 'j-drama'].some((c) => cardCat.includes(c) || country.includes(c));
+        } else {
+          matches = cardCat.includes(filter) || country.includes(filter);
+        }
+
+        if (matches) {
+          matchingCards.push(anchor);
+        } else {
+          anchor.style.display = 'none';
+        }
+      });
+
+      // 2. Sort all cards in grid by chosen sortType
+      if (grid) {
+        sortCardsInGrid(grid, sortType);
+      }
+
+      // 3. Show matching cards up to `limit` (e.g. 10 on homepage, or all on catalog pages)
+      const totalMatches = matchingCards.length;
+      const sortedMatching = grid ? Array.from(grid.querySelectorAll('.movie-card-anchor')).filter((c) => matchingCards.includes(c)) : matchingCards;
+
+      sortedMatching.forEach((anchor, idx) => {
+        if (limit && !isNaN(limit) && idx >= limit) {
+          anchor.style.display = 'none';
+        } else {
+          anchor.style.display = 'block';
+        }
+      });
+
+      if (countBadge) {
+        if (filter === 'all') {
+          countBadge.textContent = countBadge.getAttribute('data-orig') || `Total ${totalMatches}`;
+        } else {
+          countBadge.textContent = (limit && !isNaN(limit) && totalMatches > limit) ? `Showing ${limit} of ${totalMatches}` : `Total ${totalMatches}`;
+        }
+      }
+
+      // Button click tactile feedback
+      this.style.transform = 'scale(0.96)';
+      setTimeout(() => {
+        this.style.transform = '';
+      }, 150);
+    });
+  });
+
+  // 7. Reset Filter button click
+  document.querySelectorAll('.btn-head-reset').forEach((btn) => {
+    btn.addEventListener('click', function (e) {
+      if (e) e.preventDefault();
+      const section = this.closest('.library-section');
+      if (!section) return;
+      const grid = section.querySelector('.movie-grid');
+      const sortBtn = section.querySelector('.btn-head-sort');
+      const sortMenu = section.querySelector('.sort-dropdown-menu');
+      const indBtn = section.querySelector('.btn-head-industry, .btn-head-category');
+      const indMenu = section.querySelector('.industry-dropdown-menu, .category-dropdown-menu');
+      const limit = parseInt(section.getAttribute('data-limit'), 10);
+
+      // Re-sort grid to Name A-Z on this page
+      if (grid) sortCardsInGrid(grid, 'name-asc');
+
+      // Unhide cards up to limit (10 on homepage, all on catalog pages)
+      const allCards = section.querySelectorAll('.movie-card-anchor');
+      allCards.forEach((c, idx) => {
+        c.style.display = (limit && !isNaN(limit) && idx >= limit) ? 'none' : 'block';
+      });
+
+      const countBadge = section.querySelector('.section-head-left .pill-badge');
+      if (countBadge) {
+        countBadge.textContent = countBadge.getAttribute('data-orig') || `Total ${allCards.length}`;
+      }
+
+      // Reset Industry selection
+      if (indBtn) {
+        indBtn.setAttribute('data-selected', 'all');
+        indBtn.classList.remove('active');
+        indBtn.setAttribute('aria-expanded', 'false');
+        const indText = indBtn.querySelector('.industry-text, .category-text');
+        if (indText) {
+          indText.textContent = indBtn.classList.contains('btn-head-industry') ? 'Industry: All' : 'Filter: All';
+        }
+      }
+      if (indMenu) {
+        indMenu.querySelectorAll('.industry-option, .category-option').forEach((o) => {
+          o.classList.toggle('active', (o.getAttribute('data-filter') || 'all') === 'all');
+        });
+        indMenu.classList.remove('show');
+      }
+
+      // Reset Sort selection
+      if (sortBtn) {
+        sortBtn.setAttribute('data-selected', 'name-asc');
+        sortBtn.classList.remove('active');
+        sortBtn.setAttribute('aria-expanded', 'false');
+        const sortText = sortBtn.querySelector('.sort-text');
+        if (sortText) sortText.textContent = sortLabelMap['name-asc'];
+      }
+      if (sortMenu) {
+        sortMenu.querySelectorAll('.sort-option').forEach((o) => {
+          o.classList.toggle('active', o.getAttribute('data-sort') === 'name-asc');
+        });
+        sortMenu.classList.remove('show');
+      }
+    });
+  });
+
+  // 8. Close dropdowns on outside click
+  document.addEventListener('click', () => {
+    document.querySelectorAll('.industry-dropdown-menu.show, .category-dropdown-menu.show, .sort-dropdown-menu.show').forEach((m) => m.classList.remove('show'));
+    document.querySelectorAll('.btn-head-industry.active, .btn-head-category.active, .btn-head-sort.active').forEach((b) => {
+      b.classList.remove('active');
+      b.setAttribute('aria-expanded', 'false');
+    });
+  });
+}
+
+/* ==========================================================================
+   Report Broken Link Modal Handler
+   ========================================================================== */
+function initReportBrokenLink() {
+  const reportBtns = document.querySelectorAll('.btn-report-broken');
+  if (!reportBtns.length) return;
+
+  // Build modal elements if not already in DOM
+  let modalOverlay = document.getElementById('reportModalOverlay');
+  if (!modalOverlay) {
+    modalOverlay = document.createElement('div');
+    modalOverlay.id = 'reportModalOverlay';
+    modalOverlay.className = 'report-modal-overlay';
+    modalOverlay.setAttribute('aria-hidden', 'true');
+    modalOverlay.innerHTML = `
+      <div class="report-modal-card" role="dialog" aria-modal="true" aria-labelledby="reportModalTitle">
+        <button type="button" class="report-modal-close" id="reportModalCloseBtn" aria-label="Close modal">&times;</button>
+        <div class="report-modal-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+            <line x1="12" y1="9" x2="12" y2="13"></line>
+            <line x1="12" y1="17" x2="12.01" y2="17"></line>
+          </svg>
+        </div>
+        <h3 class="report-modal-title" id="reportModalTitle">লিংক কাজ করছে না?</h3>
+        <p class="report-modal-subtitle">
+          কোনো সাবটাইটেল বা মিডিয়া ডাউনলোড লিংকে সমস্যা হলে সরাসরি এডমিনকে জানান। অতি দ্রুত লিংক ফিক্স করা হবে।<br>
+          <span class="report-modal-target" id="reportModalTargetName">Title</span>
+        </p>
+        <div class="report-modal-actions">
+          <a href="#" target="_blank" rel="noopener noreferrer" class="report-action-wa" id="reportModalWaBtn">
+            <span>💬 Report to Admin on WhatsApp</span>
+          </a>
+          <a href="https://t.me/FOBS_Team" target="_blank" rel="noopener noreferrer" class="report-action-tg">
+            <span>✈️ Report on Telegram Community</span>
+          </a>
+          <a href="#" class="report-action-page" id="reportModalContactBtn">
+            <span>📝 Open Contact & Support Page</span>
+          </a>
+        </div>
+      </div>
+    `;
+    document.body.appendChild(modalOverlay);
+
+    const closeBtn = document.getElementById('reportModalCloseBtn');
+    if (closeBtn) {
+      closeBtn.addEventListener('click', () => closeReportModal());
+    }
+
+    modalOverlay.addEventListener('click', (e) => {
+      if (e.target === modalOverlay) closeReportModal();
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modalOverlay.classList.contains('active')) {
+        closeReportModal();
+      }
+    });
+  }
+
+  function closeReportModal() {
+    if (modalOverlay) {
+      modalOverlay.classList.remove('active');
+      modalOverlay.setAttribute('aria-hidden', 'true');
+    }
+  }
+
+  function openReportModal(itemTitle, contactHref) {
+    const targetSpan = document.getElementById('reportModalTargetName');
+    const waBtn = document.getElementById('reportModalWaBtn');
+    const contactBtn = document.getElementById('reportModalContactBtn');
+
+    if (targetSpan) targetSpan.textContent = itemTitle;
+
+    const waMsg = encodeURIComponent(`Hello FOBS Team Admin, I found a broken download link on the website:\nTitle: ${itemTitle}\nPage URL: ${window.location.href}`);
+    if (waBtn) {
+      waBtn.href = `https://wa.me/qr/5DRWLEEBITSXA1?text=${waMsg}`;
+    }
+    if (contactBtn) {
+      contactBtn.href = contactHref || (typeof getRelativePathToRoot === 'function' ? getRelativePathToRoot() : '') + 'contact.html';
+    }
+
+    if (modalOverlay) {
+      modalOverlay.classList.add('active');
+      modalOverlay.setAttribute('aria-hidden', 'false');
+    }
+  }
+
+  reportBtns.forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const titleElem = document.querySelector('.details-heading-title') || document.querySelector('h1');
+      const itemTitle = titleElem ? titleElem.textContent.trim() : document.title.replace(' | FOBS Subtitles', '').trim();
+      const contactHref = btn.getAttribute('href') || 'contact.html';
+      openReportModal(itemTitle, contactHref);
+    });
+  });
+}
+
+
 
 
 

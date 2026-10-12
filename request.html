@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Request Bangla Subtitle - FOBS Subtitles</title>
   <meta name="description" content="Request a Bangla subtitle for your favorite movie or TV series from FOBS Team. Direct community requests." />
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎬</text></svg>" />
+  <link rel="icon" type="image/png" href="images/favicon.png" />
   <link rel="stylesheet" href="css/style.css" />
 </head>
 
@@ -17,10 +17,7 @@
     <div class="header-inner">
       <a href="index.html" class="logo-wrapper">
         <div class="logo-icon">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3">
-            <rect x="2" y="4" width="20" height="16" rx="3" ry="3"></rect>
-            <path d="M7 15h4M15 15h2M7 11h10"></path>
-          </svg>
+          <img src="images/logo.png" alt="FOBS Team Logo" />
         </div>
         <div class="logo-text-group">
             <span class="site-title">FOBS Team</span>
@@ -31,11 +28,26 @@
       <nav class="site-nav" id="siteNav">
         <ul class="nav-links">
           <li><a href="index.html" class="nav-link">Home</a></li>
-          <li><a href="index.html#latest" class="nav-link">Latest</a></li>
+          <li><a href="series.html" class="nav-link">TV &amp; Web Series</a></li>
+          <li><a href="movies.html" class="nav-link">Movies</a></li>
+          <li><a href="paid.html" class="nav-link">Paid</a></li>
+          <li><a href="free.html" class="nav-link">Free</a></li>
           <li><a href="request.html" class="nav-link active">Request Subtitle</a></li>
-          <li><a href="about.html" class="nav-link">About Us</a></li>
-          <li><a href="contact.html" class="nav-link">Contact</a></li>
         </ul>
+
+        <!-- Header Live Search Bar -->
+        <div class="header-search-box">
+          <form id="headerSearchForm" action="index.html" method="GET" class="header-search-form">
+            <div class="header-search-icon">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+            </div>
+            <input type="text" name="search" id="liveSearchInput" placeholder="Search any Movie or Series..." class="header-search-input" autocomplete="off" />
+            <button type="submit" id="searchSubmitBtn" class="header-search-btn">Search</button>
+          </form>
+        </div>
 
         <div class="header-cta-group">
           <a href="community.html" class="community-cta-btn">
@@ -190,25 +202,17 @@
         <div class="footer-col footer-col-brand">
           <div class="logo-wrapper">
             <div class="logo-icon" style="width: 36px; height: 36px;">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
-                <rect x="2" y="4" width="20" height="16" rx="3" ry="3"></rect>
-                <path d="M7 15h4M15 15h2M7 11h10"></path>
-              </svg>
-            </div>
+          <img src="images/logo.png" alt="FOBS Team Logo" />
+        </div>
             <div class="logo-text-group">
             <span class="site-title" style="font-size: 1.25rem;">FOBS Team</span>
             <span class="site-tagline">FOBS Subtitles</span>
           </div>
           </div>
           <p class="footer-desc">
-            হাই-কোয়ালিটি ও পারফেক্টলি সিঙ্কড বাংলা সাবটাইটেল হাব। মুভি, টিভি সিরিজ, কে-ড্রামা ও সি-ড্রামার নির্ভুল বাংলা সাবটাইটেল সম্পূর্ণ ফ্রিতে ডাউনলোড করুন।
+            We work to pay the translators the wages they deserve. Dedicated to delivering high-quality, accurately synced Bangla subtitles while ensuring our talented creators receive fair value for their hard work.
           </p>
-          <div class="footer-badges">
-            <span class="footer-badge">🇧🇩 বাংলা সাবটাইটেল</span>
-            <span class="footer-badge">⚡ 100% Free &amp; Synced</span>
-            <span class="footer-badge">🎬 FOBS Translation Team</span>
           </div>
-        </div>
 
         <!-- Col 2: Quick Links -->
         <div class="footer-col">
@@ -253,6 +257,7 @@
     </div>
   </footer>
 
+  <script src="js/search-data.js"></script>
   <script src="js/tmdb.js"></script>
   <script src="js/main.js"></script>
   <script>
