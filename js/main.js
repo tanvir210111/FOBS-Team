@@ -926,8 +926,12 @@ function initInstantSearchAndModal() {
     const html = topResults.map((item) => {
       const regex = new RegExp(`(${escapeRegex(cleanQ)})`, 'gi');
       const highlightedTitle = escapeHtml(item.title).replace(regex, '<mark class="search-highlight">$1</mark>');
-      const badgeClass = (item.type || '').toLowerCase() === 'series' ? 'series' : 'movie';
-      const itemUrl = `${rootPrefix}${item.url}`;
+      const isSeries = (item.type || '').toLowerCase() === 'series' || (item.type || '').toLowerCase() === 'tv';
+      const badgeClass = isSeries ? 'series' : 'movie';
+      const badgeText = isSeries ? 'Series' : 'Movie';
+      const rawLink = item.link || item.url || '';
+      const cleanLink = rawLink.startsWith('/') ? rawLink.slice(1) : rawLink;
+      const itemUrl = `${rootPrefix}${cleanLink}`;
 
       return `
         <a href="${itemUrl}" class="suggestion-card">
@@ -935,7 +939,7 @@ function initInstantSearchAndModal() {
           <div class="suggestion-info">
             <span class="suggestion-title">${highlightedTitle}</span>
             <div class="suggestion-meta">
-              <span class="suggestion-badge ${badgeClass}">${item.type}</span>
+              <span class="suggestion-badge ${badgeClass}">${badgeText}</span>
               <span class="suggestion-badge category">${escapeHtml(item.category)}</span>
               <span class="suggestion-year">${item.year}</span>
             </div>
