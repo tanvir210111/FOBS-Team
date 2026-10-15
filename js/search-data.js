@@ -2,6 +2,18 @@
 // Verified and synced with user's Subsource account and Paid Series
 window.FOBS_CATALOG = [
   {
+    "id": "161570",
+    "title": "A Bona Fide Killer",
+    "type": "tv",
+    "category": "K-Drama",
+    "country": "South Korea",
+    "year": "2026",
+    "link": "series/South Korea/K-Drama/series_161570.html",
+    "poster": "https://image.tmdb.org/t/p/w600_and_h900_bestv2/e9ziA4Y6md4Ytr62r5y9vRdv4ll.jpg",
+    "episodes": 4,
+    "rating": "9.8"
+  },
+  {
     "id": "163374",
     "title": "Doctor X: Mafia in White",
     "type": "tv",
@@ -11,18 +23,6 @@ window.FOBS_CATALOG = [
     "link": "series/South Korea/K-Drama/series12.html",
     "poster": "https://image.tmdb.org/t/p/w600_and_h900_bestv2/a5kWnqgoTOWrv2xZoruQgTSbGgA.jpg",
     "episodes": 2,
-    "rating": "9.8"
-  },
-  {
-    "id": "161570",
-    "title": "A Bona Fide Killer",
-    "type": "tv",
-    "category": "K-Drama",
-    "country": "South Korea",
-    "year": "2026",
-    "link": "series/South Korea/K-Drama/series_161570.html",
-    "poster": "https://image.tmdb.org/t/p/w600_and_h900_bestv2/e9ziA4Y6md4Ytr62r5y9vRdv4ll.jpg",
-    "episodes": 3,
     "rating": "9.8"
   },
   {

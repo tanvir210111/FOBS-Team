@@ -456,7 +456,9 @@ function initDetailsPageHero() {
 
   // Determine cover photo URL
   let coverUrl = '';
-  if (titleText.includes('doctor x')) {
+  if (titleText.includes('bona fide') || titleText.includes('bonafide')) {
+    coverUrl = rootPath + 'images/covers/bona_fide_killer_cover.jpg';
+  } else if (titleText.includes('doctor x')) {
     coverUrl = rootPath + 'images/covers/doctor_x_cover.jpg';
   } else if (titleText.includes('omniscient reader')) {
     coverUrl = rootPath + 'images/covers/omniscient_reader_cover.jpg';
